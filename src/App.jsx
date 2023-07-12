@@ -6,10 +6,15 @@ import SignUpPage from "./pages/SignUpPage"
 import ProductPage from "./pages/ProductPage"
 import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
+import AuthContext from "./contexts/AuthContext"
 
 export default function App() {
+  // const [token, setToken] = useState(localStorage.getItem("token"))
+  // const [userName, setUserName] = useState(localStorage.getItem("userName"))
+
   return (
     <PagesContainer>
+      {/* <AuthContext.Provider value={{ token, setToken, userName, setUserName }}> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignInPage />} />
@@ -20,6 +25,7 @@ export default function App() {
           <Route path="/pagamento" element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
+      {/* </AuthContext.Provider> */}
     </PagesContainer>
   )
 }
