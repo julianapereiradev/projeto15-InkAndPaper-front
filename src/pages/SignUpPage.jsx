@@ -27,7 +27,7 @@ export default function SignUpPage() {
 
     axios.post(requisitions.postSignUp, newUser)
       .then(() => navigate(pages.signIn))
-      .catch(error => alert(error.response.data.message))
+      .catch(error => alert(error.response.data))
   }
 
   function handleChange(e) {
