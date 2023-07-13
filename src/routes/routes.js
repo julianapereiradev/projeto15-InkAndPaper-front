@@ -14,7 +14,8 @@ export const requisitions = {
     postSignIn: API_URL + '/sign-in',
     getProducts: API_URL + '/home',
     getProduct: API_URL + '/product/',
-    updateShoppingCart: API_URL + '/update-shopping-cart'
+    updateShoppingCart: API_URL + '/update-shopping-cart',
+    logout: API_URL + '/logout'
 }
 
 export function headersAuth(token) {
