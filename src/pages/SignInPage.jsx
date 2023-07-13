@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState, useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
+import { pages, requisitions } from "../routes/routes";
 // import AuthContext from "../contexts/AuthContext";
 
 export default function SignInPage() {
 
   const navigate = useNavigate();
 
-  // const {setToken, setUserName} = useContext(AuthContext)
+  // const {user, setUser} = useContext(AuthContext)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,14 +22,17 @@ export default function SignInPage() {
 
     const login = { email: email, password: password };
 
-    const promise = axios.post(`https://localhost:5000/sign-in`, login);
+    const promise = axios.post(requisitions.postSignIn, login);
 
     promise.then((res) => {
-      // setToken(res.data.token)
-      // setUserName(res.data.userName)
-      // localStorage.setItem("token", res.data.token)
-      // localStorage.setItem("userName", res.data.userName)
-      navigate("/home")
+      // const newUser = {
+      //   name: res.data.username,
+      //   token: res.data.token,
+      //   image: res.data.image
+      // }
+      // setUser(newUser);
+      // localStorage.setItem("user", JSON.stringify(newUser))
+      navigate(pages.home)
       setDisable(false)
 
       console.log("resposta.data em: POST no Login:", res.data);
@@ -79,7 +83,7 @@ export default function SignInPage() {
         </button>
       </form>
 
-      <Link to={`/cadastro`}>
+      <Link to={pages.signUp}>
         Primeira vez? Cadastre-se!
       </Link>
     </SingInContainer>

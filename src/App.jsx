@@ -7,22 +7,22 @@ import ProductPage from "./pages/ProductPage"
 import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
 import AuthContext from "./contexts/AuthContext"
+import { pages } from "./routes/routes"
 
 export default function App() {
-  // const [token, setToken] = useState(localStorage.getItem("token"))
-  // const [userName, setUserName] = useState(localStorage.getItem("userName"))
+  // const [user, setUser] = useState(0);
 
   return (
     <PagesContainer>
-      {/* <AuthContext.Provider value={{ token, setToken, userName, setUserName }}> */}
+      {/* <AuthContext.Provider value={{ user, setUser }}> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignInPage />} />
-          <Route path="/cadastro" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/produto" element={<ProductPage />} />
-          <Route path="/carrinho" element={<CartPage />} />
-          <Route path="/pagamento" element={<CheckoutPage />} />
+          <Route path={pages.signIn} element={<SignInPage />} />
+          <Route path={pages.signUp} element={<SignUpPage />} />
+          <Route path={pages.home} element={<HomePage />} />
+          <Route path={pages.product} element={<ProductPage />} />
+          <Route path={pages.shoppingCart} element={<CartPage />} />
+          <Route path={pages.checkout} element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
       {/* </AuthContext.Provider> */}
