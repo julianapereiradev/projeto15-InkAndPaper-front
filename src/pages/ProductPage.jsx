@@ -19,7 +19,7 @@ export default function ProductPage() {
   useEffect(() => {
     validateUser(user, setUser);
 
-    axios.get(requisitions.getProduct + id, headersAuth(user.token))
+    axios.get(requisitions.postShoppingCart + id, headersAuth(user.token))
       .then(resp => setProduct(resp.data))
       .catch(error => {
         alert(error.response.data);
