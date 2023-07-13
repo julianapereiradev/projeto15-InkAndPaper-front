@@ -30,10 +30,13 @@ export default function ProductPage() {
   function HandleSubmit(e) {
     e.preventDefault();
     setMayISubmit(false);
-    const informations = {id, shopQauntity}
+    const informations = {id, quantity: shopQauntity}
 
-    axios.post(requisitions.updateShoppingCart, informations, headersAuth(user.token))
-      .then(resp => navigate(pages.home))
+    axios.post(requisitions.getProduct + id + '/update-shopping-cart', informations, headersAuth(user.token))
+      .then(resp => {
+        navigate(pages.home)
+        console.log("resp do post para atualizar carrinho", resp.data)
+      })
       .catch(error => {
         alert(error.response.data);
         setMayISubmit(true);
