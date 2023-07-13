@@ -29,9 +29,7 @@ export default function HomePage() {
   }, [user]);
 
   function openProductId(productId) {
-    alert(`O id clicado foi ${productId}`)
-
-    //ser redirecionado para <ProductPage />
+    navigate(pages.product + productId)
   }
 
   console.log('products em home:', products)
