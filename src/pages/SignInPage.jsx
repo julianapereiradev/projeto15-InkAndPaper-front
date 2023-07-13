@@ -26,7 +26,7 @@ export default function SignInPage() {
 
     promise.then((res) => {
       // const newUser = {
-      //   name: res.data.name,
+      //   name: res.data.username,
       //   token: res.data.token,
       //   image: res.data.image
       // }
