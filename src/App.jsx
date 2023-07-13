@@ -8,24 +8,25 @@ import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
 import AuthContext from "./contexts/AuthContext"
 import { pages } from "./routes/routes"
+import { useState } from "react"
 
 export default function App() {
-  // const [user, setUser] = useState(0);
+  const [user, setUser] = useState(0);
 
   return (
     <PagesContainer>
-      {/* <AuthContext.Provider value={{ user, setUser }}> */}
+      <AuthContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
         <Routes>
           <Route path={pages.signIn} element={<SignInPage />} />
           <Route path={pages.signUp} element={<SignUpPage />} />
           <Route path={pages.home} element={<HomePage />} />
-          <Route path={pages.product} element={<ProductPage />} />
+          <Route path={pages.product + ':id'} element={<ProductPage />} />
           <Route path={pages.shoppingCart} element={<CartPage />} />
           <Route path={pages.checkout} element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
-      {/* </AuthContext.Provider> */}
+      </AuthContext.Provider>
     </PagesContainer>
   )
 }
