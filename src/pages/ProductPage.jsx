@@ -41,12 +41,13 @@ export default function ProductPage() {
   }
 
   return (
-    <ProductContainer>
+      <>
+      <ProductContainer>
       <Header />
       {product ? (
-        <>
-          <h1>{product.title}</h1>
+        <ProductBox>
           <img src={product.image} alt="Imagem do produto" />
+          <h1>{product.title}</h1>
           <span>
             Preço: R${product.price.toFixed(2)} Quantidade disponível: {product.quantityInStock}
           </span>
@@ -67,8 +68,7 @@ export default function ProductPage() {
                 type="number"
                 required
                 value={shopQauntity}
-                onChange={e => setShopQuantity(e.target.value)}
-              />
+                onChange={e => setShopQuantity(e.target.value)} />
 
               <button type="button" onClick={() => setShopQuantity(shopQauntity + (shopQauntity < product.quantityInStock ? 1 : 0))}>
                 +
@@ -83,17 +83,20 @@ export default function ProductPage() {
             </button>
           </form>
 
-        </>
+        </ProductBox>
       ) : (
         <ThreeDots type="ThreeDots" color="#af0d0d" height={20} width={50} />
       )}
     </ProductContainer>
+    </>
   )
 }
 
 const ProductContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+`
+
+const ProductBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
