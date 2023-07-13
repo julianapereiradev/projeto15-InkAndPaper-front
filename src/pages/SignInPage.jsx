@@ -4,13 +4,13 @@ import { useState, useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { pages, requisitions } from "../routes/routes";
-// import AuthContext from "../contexts/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 
 export default function SignInPage() {
 
   const navigate = useNavigate();
 
-  // const {user, setUser} = useContext(AuthContext)
+  const {user, setUser} = useContext(AuthContext)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,13 +25,13 @@ export default function SignInPage() {
     const promise = axios.post(requisitions.postSignIn, login);
 
     promise.then((res) => {
-      // const newUser = {
-      //   name: res.data.username,
-      //   token: res.data.token,
-      //   image: res.data.image
-      // }
-      // setUser(newUser);
-      // localStorage.setItem("user", JSON.stringify(newUser))
+      const newUser = {
+        name: res.data.username,
+        token: res.data.token,
+        image: res.data.image
+      }
+      setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser))
       navigate(pages.home)
       setDisable(false)
 
@@ -52,6 +52,7 @@ export default function SignInPage() {
         <input
           data-test="email"
           type="email"
+          autoComplete="username"
           placeholder="E-mail"
           required
           disabled={disable}
