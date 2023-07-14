@@ -78,8 +78,8 @@ export default function ProductPage() {
             <button type="submit" disabled={!mayISubmit}>
               Adicionar ao Carrinho
             </button>
-            <button type="button" onClick={() => navigate(pages.home)} disabled={!mayISubmit}>
-              Voltar para lista de produtos
+            <button type="button" onClick={() => navigate(pages.shoppingCart)} disabled={!mayISubmit}>
+              Comprar agora
             </button>
           </form>
 
@@ -98,4 +98,7 @@ const ProductContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  image {
+    width: 30vw;
+  }
 `
