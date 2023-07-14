@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     * {
-        font-family: 'Raleway';
+        /* font-family: 'Island Moments', cursive; */
+        font-family: 'Inika', serif;
         font-style: normal;
         font-weight: 400;
     }
