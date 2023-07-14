@@ -9,6 +9,7 @@ import CheckoutPage from "./pages/CheckoutPage"
 import AuthContext from "./contexts/AuthContext"
 import { pages } from "./routes/routes"
 import { useState } from "react"
+import './App.css'
 
 export default function App() {
   const [user, setUser] = useState(0);

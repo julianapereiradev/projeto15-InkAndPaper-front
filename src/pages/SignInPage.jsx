@@ -67,7 +67,7 @@ export default function SignInPage() {
 
         <TopBox >
         <Logo />
-        <Title>Login</Title>
+        <div className="font-brit">Login</div>
         </TopBox>
         
         <InputBox>
@@ -154,13 +154,6 @@ const TopBox = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-margin-top: 50px;
-`
-
-const Title = styled.h1`
-font-family: 'Island Moments', cursive;
-color: #F6E4C4;
-font-size: 80px;
 `
 
 const InputBox = styled.div`
@@ -170,8 +163,6 @@ padding-left: 100px;
 padding-right: 100px;
 
 input {
-  margin-right: 20px;
-  margin-left: 20px;
   margin-bottom: 30px;
   height: 50px;
   border: 1px solid #F6E4C4;

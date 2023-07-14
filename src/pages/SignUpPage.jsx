@@ -60,7 +60,7 @@ export default function SignUpPage() {
 
         <TopBox >
         <Logo />
-        <Title>Cadastro</Title>
+        <div className="font-brit">Cadastro</div>
         </TopBox>
         
         <InputBox>
@@ -165,12 +165,6 @@ flex-direction: column;
 align-items: center;
 `
 
-const Title = styled.h1`
-font-family: 'Island Moments', cursive;
-color: #F6E4C4;
-font-size: 80px;
-`
-
 const InputBox = styled.div`
 display: flex;
 flex-direction: column;
@@ -178,7 +172,7 @@ padding-left: 100px;
 padding-right: 100px;
 
 input {
-  margin: 20px;
+  margin-top: 20px;
   height: 50px;
   border: 1px solid #F6E4C4;
   border-radius: 8px;
