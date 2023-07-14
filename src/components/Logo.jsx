@@ -1,3 +1,3 @@
 export default function Logo() {
-    return <h1>Ink&Paper</h1>
+    return <h1 style={{color: "white"}}>Ink&Paper</h1>
 }
