@@ -1,3 +1,9 @@
+import logoinicio from "../images/logoinicio.png"
+
 export default function Logo() {
-    return <h1 style={{color: "white"}}>Ink&Paper</h1>
+    return (
+        <>
+        <img src={logoinicio} style={{width: '200px', marginTop: '30px'}}/>
+        </>
+    )
 }

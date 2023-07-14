@@ -173,7 +173,6 @@ input {
   margin-right: 20px;
   margin-left: 20px;
   margin-bottom: 30px;
-  margin-top: 30px;
   height: 50px;
   border: 1px solid #F6E4C4;
   border-radius: 8px;
@@ -192,7 +191,7 @@ input::placeholder {
 const BottomBox = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 50px;
+margin-bottom: 30px;
 
 button {
   background-color: #F6E4C4;

@@ -163,7 +163,6 @@ const TopBox = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-margin-top: 50px;
 `
 
 const Title = styled.h1`
@@ -198,7 +197,7 @@ input::placeholder {
 const BottomBox = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 50px;
+margin-bottom: 30px;
 
 button {
   background-color: #F6E4C4;
