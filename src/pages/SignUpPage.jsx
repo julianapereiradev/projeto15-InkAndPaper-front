@@ -5,6 +5,7 @@ import { pages, requisitions } from "../routes/routes";
 import { useState } from "react";
 import Logo from "../components/Logo";
 import welcomeImage from "../images/welcome.jpg"
+import { ThreeDots } from "react-loader-spinner";
 
 export default function SignUpPage() {
   const [formStates, setFormStates] = useState({
@@ -14,10 +15,13 @@ export default function SignUpPage() {
     checkPassword: ''
   })
 
+  const [disable, setDisable] = useState(false);
+
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setDisable(true);
 
     if (formStates.password !== formStates.checkPassword) {
       return alert('Confirmação de senha está incorreta!')
@@ -27,8 +31,14 @@ export default function SignUpPage() {
     delete newUser.checkPassword;
 
     axios.post(requisitions.postSignUp, newUser)
-      .then(() => navigate(pages.signIn))
-      .catch(error => alert(error.response.data))
+      .then(() => {
+        navigate(pages.signIn)
+        setDisable(false)
+      })
+      .catch(error => {
+        alert(error.response.data)
+        setDisable(false)
+      })
   }
 
   function handleChange(e) {
@@ -38,8 +48,8 @@ export default function SignUpPage() {
   }
 
   return (
-    <SingUpContainer>
-    <SingUpBox>
+    <SignUpContainer>
+    <SignUpBox>
       <LeftBox>
       <img src={welcomeImage} style={{maxHeight: '800px'}} />
       </LeftBox>
@@ -61,6 +71,7 @@ export default function SignUpPage() {
           value={formStates.name}
           onChange={e => handleChange(e)}
           autoComplete="name"
+          disabled={disable}
         />
         <input
           id="email"
@@ -69,6 +80,7 @@ export default function SignUpPage() {
           autoComplete="username"
           value={formStates.email}
           onChange={e => handleChange(e)}
+          disabled={disable}
         />
         <input
           id="password"
@@ -77,6 +89,7 @@ export default function SignUpPage() {
           autoComplete="new-password" 
           value={formStates.password}
           onChange={e => handleChange(e)}
+          disabled={disable}
         />
         <input 
           id="checkPassword"
@@ -85,11 +98,21 @@ export default function SignUpPage() {
           autoComplete="new-password" 
           value={formStates.checkPassword}
           onChange={e => handleChange(e)}
+          disabled={disable}
         />
         </InputBox>
 
         <BottomBox>
-        <button type="submit">Cadastrar</button>
+        <button
+        type="submit" 
+        disabled={disable}
+        >
+          {disable ? (
+            <ThreeDots type="ThreeDots" color="#1F1712" height={20} width={50} />
+          ) : (
+            "Cadastrar"
+          )}
+        </button>
         <LinkToSignIn to={pages.signIn}>
         Já tem uma conta? Entre agora!
       </LinkToSignIn>
@@ -98,12 +121,12 @@ export default function SignUpPage() {
       </FormBox>
       </form>
       </RightBox>
-    </SingUpBox>
-    </SingUpContainer>
+    </SignUpBox>
+    </SignUpContainer>
   )
 }
 
-const SingUpContainer = styled.div`
+const SignUpContainer = styled.div`
 background-color: #1F1712;
 height: 100vh;
 display: flex;
@@ -111,7 +134,7 @@ justify-content: center;
 align-items: center;
 `
 
-const SingUpBox = styled.div`
+const SignUpBox = styled.div`
 width: 1400px;
 height: 800px;
 border: 1px solid #F6E4C4;
@@ -187,6 +210,9 @@ button {
   margin-bottom: 20px;
   width: 130px;
   align-self: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
 }
 `
 
