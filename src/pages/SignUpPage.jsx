@@ -21,15 +21,15 @@ export default function SignUpPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setDisable(true);
-
+    
     if (formStates.password !== formStates.checkPassword) {
       return alert('Confirmação de senha está incorreta!')
     }
-
+    
     const newUser = {...formStates};
     delete newUser.checkPassword;
-
+    setDisable(true);
+    
     axios.post(requisitions.postSignUp, newUser)
       .then(() => {
         navigate(pages.signIn)
@@ -71,6 +71,7 @@ export default function SignUpPage() {
           value={formStates.name}
           onChange={e => handleChange(e)}
           autoComplete="name"
+          required
           disabled={disable}
         />
         <input
@@ -80,6 +81,7 @@ export default function SignUpPage() {
           autoComplete="username"
           value={formStates.email}
           onChange={e => handleChange(e)}
+          required
           disabled={disable}
         />
         <input
@@ -89,6 +91,7 @@ export default function SignUpPage() {
           autoComplete="new-password" 
           value={formStates.password}
           onChange={e => handleChange(e)}
+          required
           disabled={disable}
         />
         <input 
@@ -98,6 +101,7 @@ export default function SignUpPage() {
           autoComplete="new-password" 
           value={formStates.checkPassword}
           onChange={e => handleChange(e)}
+          required
           disabled={disable}
         />
         </InputBox>
