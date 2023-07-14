@@ -175,8 +175,6 @@ input::placeholder {
 const BottomBox = styled.div`
 display: flex;
 flex-direction: column;
-padding-left: 250px;
-padding-right: 250px;
 margin-bottom: 50px;
 
 button {
@@ -187,6 +185,8 @@ button {
   font-size: 22px;
   cursor: pointer;
   margin-bottom: 20px;
+  width: 130px;
+  align-self: center;
 }
 `
 
