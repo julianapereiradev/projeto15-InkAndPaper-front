@@ -5,12 +5,19 @@ import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { pages, requisitions } from "../routes/routes";
 import AuthContext from "../contexts/AuthContext";
+import { validateUser } from "../constants/functions";
 
 export default function SignInPage() {
 
   const navigate = useNavigate();
 
   const {user, setUser} = useContext(AuthContext)
+  // validateUser(user, setUser);
+  // console.log(user)
+
+  // if (user) {
+  //   navigate(pages.home);
+  // }
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

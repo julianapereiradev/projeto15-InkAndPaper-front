@@ -19,7 +19,7 @@ export default function ProductPage() {
   useEffect(() => {
     validateUser(user, setUser);
 
-    axios.get(requisitions.getProduct + id, headersAuth(user.token))
+    axios.get(requisitions.postShoppingCart + id, headersAuth(user.token))
       .then(resp => setProduct(resp.data))
       .catch(error => {
         alert(error.response.data);
@@ -30,10 +30,13 @@ export default function ProductPage() {
   function HandleSubmit(e) {
     e.preventDefault();
     setMayISubmit(false);
-    const informations = {id, shopQauntity}
+    const informations = {id, quantity: shopQauntity}
 
-    axios.post(requisitions.updateShoppingCart, informations, headersAuth(user.token))
-      .then(resp => navigate(pages.home))
+    axios.post(requisitions.getProduct + id + '/update-shopping-cart', informations, headersAuth(user.token))
+      .then(resp => {
+        navigate(pages.home)
+        console.log("resp do post para atualizar carrinho", resp.data)
+      })
       .catch(error => {
         alert(error.response.data);
         setMayISubmit(true);
@@ -41,12 +44,13 @@ export default function ProductPage() {
   }
 
   return (
-    <ProductContainer>
+      <>
+      <ProductContainer>
       <Header />
       {product ? (
-        <>
-          <h1>{product.title}</h1>
+        <ProductBox>
           <img src={product.image} alt="Imagem do produto" />
+          <h1>{product.title}</h1>
           <span>
             Preço: R${product.price.toFixed(2)} Quantidade disponível: {product.quantityInStock}
           </span>
@@ -67,8 +71,7 @@ export default function ProductPage() {
                 type="number"
                 required
                 value={shopQauntity}
-                onChange={e => setShopQuantity(e.target.value)}
-              />
+                onChange={e => setShopQuantity(e.target.value)} />
 
               <button type="button" onClick={() => setShopQuantity(shopQauntity + (shopQauntity < product.quantityInStock ? 1 : 0))}>
                 +
@@ -83,17 +86,20 @@ export default function ProductPage() {
             </button>
           </form>
 
-        </>
+        </ProductBox>
       ) : (
         <ThreeDots type="ThreeDots" color="#af0d0d" height={20} width={50} />
       )}
     </ProductContainer>
+    </>
   )
 }
 
 const ProductContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+`
+
+const ProductBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
