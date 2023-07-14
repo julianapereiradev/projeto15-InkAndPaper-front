@@ -14,12 +14,13 @@ export default function ProductPage() {
   const [shopQauntity, setShopQuantity] = useState(1);
   const [mayISubmit, setMayISubmit] = useState(true);
   const navigate = useNavigate();
+  let destiny;
   const { id } = useParams();
 
   useEffect(() => {
     validateUser(user, setUser);
 
-    axios.get(requisitions.postShoppingCart + id, headersAuth(user.token))
+    axios.get(requisitions.getProduct + id, headersAuth(user.token))
       .then(resp => setProduct(resp.data))
       .catch(error => {
         alert(error.response.data);
@@ -32,10 +33,9 @@ export default function ProductPage() {
     setMayISubmit(false);
     const informations = {id, quantity: shopQauntity}
 
-    axios.post(requisitions.getProduct + id + '/update-shopping-cart', informations, headersAuth(user.token))
+    axios.post(requisitions.postShoppingCart + id , informations, headersAuth(user.token))
       .then(resp => {
-        navigate(pages.home)
-        console.log("resp do post para atualizar carrinho", resp.data)
+        navigate(destiny);
       })
       .catch(error => {
         alert(error.response.data);
@@ -78,10 +78,18 @@ export default function ProductPage() {
               </button>
             </div>
 
-            <button type="submit" disabled={!mayISubmit}>
+            <button 
+              type="submit" 
+              disabled={!mayISubmit}
+              onClick={() => destiny = pages.home}
+            >
               Adicionar ao Carrinho
             </button>
-            <button type="button" onClick={() => navigate(pages.shoppingCart)} disabled={!mayISubmit}>
+            <button 
+              type="submit" 
+              disabled={!mayISubmit}
+              onClick={() => destiny = pages.shoppingCart} 
+            >
               Comprar agora
             </button>
           </form>
