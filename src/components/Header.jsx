@@ -6,8 +6,8 @@ import { useContext } from "react"
 import AuthContext from "../contexts/AuthContext"
 import { cartOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
-import homeImg from "../assets/home.png"
 import { googleLogout } from "@react-oauth/google"
+import logoheader from "../images/logoheader.png"
 
 export default function Header() {
 
@@ -29,8 +29,8 @@ export default function Header() {
 
   return (
     <ContainerHeader>
-      <img src={homeImg} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
-      <BrandName onClick={() => navigate(pages.home)}>Ink & Paper</BrandName>
+      <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
+      <h1 className="font-brit size">Ink & Paper</h1>
       <div>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
@@ -44,24 +44,22 @@ const ContainerHeader = styled.header`
   top: 0;
   left: 0;
   z-index: 2;
-  height: 15vh;
-  width: 100vw;
-  border: 1px solid black;
-  filter: drop-shadow(3px 3px 7px black);
+  height: 70px;
+  width: 100%;
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-
   background-color: #F6E4C4;
 
   img {
-    height: 68%;
+    height: 90%;
   }
 
   div {
     * {
-      font-size: 59px;
+      font-size: 45px;
     }
   }
 
@@ -70,7 +68,7 @@ const ContainerHeader = styled.header`
   }
 `
 
-const BrandName = styled.h1` 
-  font-family: 'Island Moments', cursive;
-  font-size: 54px;
-`
+// const BrandName = styled.h1` 
+//   font-family: 'Island Moments', cursive;
+//   font-size: 54px;
+// `
