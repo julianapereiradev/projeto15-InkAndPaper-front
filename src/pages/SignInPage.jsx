@@ -47,7 +47,7 @@ export default function SignInPage() {
       .catch((erro) => {
         alert(erro.response.data);
         setDisable(false)
-        alert("erro em: POST no Login:", erro);
+        // alert("erro em: POST no Login:", erro);
       });
   }
 
