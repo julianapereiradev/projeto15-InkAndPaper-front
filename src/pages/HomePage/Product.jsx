@@ -16,7 +16,7 @@ export default function Product({ item }) {
             <Image src={item.image} />
             <TextBox>
                 <div>{item.title}</div>
-                <div>R${item.price}</div>
+                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price}</div>
             </TextBox>
         </ProductBox>
     )
@@ -24,13 +24,12 @@ export default function Product({ item }) {
 
 const ProductBox = styled.div`
   cursor: pointer;
-  width: 17vw;
   min-height: 200px;
   min-width: 131px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3vh 1.4vw
+  margin: 3vh 1.4vw;
 `
 
 const Image = styled.img`
@@ -52,10 +51,10 @@ const Image = styled.img`
 
 const TextBox = styled.div`
     padding-left: 4px;
-    width: 100%;
-    height: 5.4vh;
-    border: 5px solid #F6E4C4;
-    font-size: 0.8vw;
+    width: 12.7vw;
+    height: 7vh;
+    border: 3px solid #F6E4C4;
+    font-size: 1.0vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
