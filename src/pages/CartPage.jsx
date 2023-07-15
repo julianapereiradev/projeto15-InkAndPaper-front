@@ -58,7 +58,7 @@ export default function CartPage() {
             <p>Preço unitário: {item.price}</p>
             <p>Preço total: {item.quantity * item.price}</p>
           </Details>
-          <Remove><IonIcon icon={trashOutline}/></Remove>
+          <Remove><IonIcon icon={trashOutline} /></Remove>
         </CartItem>
       ))}
       <Total>Total: R$ {calculateTotalPrice()}</Total>
