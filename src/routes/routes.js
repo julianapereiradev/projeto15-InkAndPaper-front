@@ -12,6 +12,7 @@ const API_URL = 'http://localhost:5000';
 export const requisitions = {
     postSignUp: API_URL + '/sign-up',
     postSignIn: API_URL + '/sign-in',
+    postSignInGoogle: API_URL + '/sign-in/google',
     getProducts: API_URL + '/home',
     getProduct: API_URL + '/product/',
     postShoppingCart: API_URL + '/post-cart/',
