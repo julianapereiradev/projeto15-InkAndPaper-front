@@ -1,23 +1,25 @@
 import styled from "styled-components"
 import { Link, useNavigate } from "react-router-dom"
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { pages, requisitions } from "../routes/routes";
 import AuthContext from "../contexts/AuthContext";
 import { validateUser } from "../constants/functions";
+import { useGoogleLogin } from '@react-oauth/google';
 
 export default function SignInPage() {
-
+  const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const {user, setUser} = useContext(AuthContext)
-  // validateUser(user, setUser);
-  // console.log(user)
+  useEffect(() => {
+    validateUser(user, setUser);
+    console.log(user)
 
-  // if (user) {
-  //   navigate(pages.home);
-  // }
+    if (user !== 0 && user) {
+      navigate(pages.home);
+    }
+  }, [user])
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,28 +31,48 @@ export default function SignInPage() {
 
     const login = { email: email, password: password };
 
-    const promise = axios.post(requisitions.postSignIn, login);
-
-    promise.then((res) => {
-      const newUser = {
-        name: res.data.username,
-        token: res.data.token,
-        image: res.data.image
-      }
-      setUser(newUser);
-      localStorage.setItem("user", JSON.stringify(newUser))
-      navigate(pages.home)
-      setDisable(false)
-
-      console.log("resposta.data em: POST no Login:", res.data);
-    });
-
-    promise.catch((erro) => {
-      alert(erro.response.data);
-      setDisable(false)
-      console.log("erro em: POST no Login:", erro);
-    });
+    axios.post(requisitions.postSignIn, login)
+      .then((res) => {
+        const newUser = {
+          name: res.data.username,
+          token: res.data.token
+        }
+        setUser(newUser);
+        localStorage.setItem("user", JSON.stringify(newUser))
+        navigate(pages.home)
+        setDisable(false)
+      })
+      .catch((erro) => {
+        alert(erro.response.data);
+        setDisable(false)
+        alert("erro em: POST no Login:", erro);
+      });
   }
+
+  const login = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: codeResponse => {
+      axios.post(requisitions.postSignInGoogle, {
+        code: codeResponse.code
+      })
+        .then((res) => {
+          const newUser = {
+            name: res.data.username,
+            token: res.data.token
+          }
+          setUser(newUser);
+          localStorage.setItem("user", JSON.stringify(newUser))
+          navigate(pages.home)
+          setDisable(false)
+        })
+        .catch((erro) => {
+          alert(erro.response.data);
+          setDisable(false)
+          alert.log("erro em: POST no Login:", erro);
+        })
+    },
+    onError: errorResponse => alert(errorResponse)
+  });
 
   return (
     <SingInContainer>
@@ -79,9 +101,9 @@ export default function SignInPage() {
         />
 
         <button
-        data-test="sign-in-submit" 
-        type="submit" 
-        disabled={disable}
+          data-test="sign-in-submit"
+          type="submit"
+          disabled={disable}
         >
           {disable ? (
             <ThreeDots type="ThreeDots" color="#fff" height={20} width={50} />
@@ -91,13 +113,25 @@ export default function SignInPage() {
         </button>
       </form>
 
+      <MyCustomButton onClick={() => login()}>
+        Sign in with Google 🚀{' '}
+      </MyCustomButton>;
+
       <Link to={pages.signUp}>
         Primeira vez? Cadastre-se!
       </Link>
+
     </SingInContainer>
+
   )
 }
 
 const SingInContainer = styled.section`
-  height: 100vh;
+  height: 85vh;
+`
+const MyCustomButton = styled.button`
+  height: 10vh;
+  width: 15vw;
+  background-color: red;
+  color: white;
 `

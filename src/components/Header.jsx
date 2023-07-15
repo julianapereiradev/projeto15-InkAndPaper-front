@@ -7,6 +7,7 @@ import AuthContext from "../contexts/AuthContext"
 import { cartOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
 import homeImg from "../assets/home.png"
+import { googleLogout } from "@react-oauth/google"
 
 export default function Header() {
 
@@ -20,7 +21,8 @@ export default function Header() {
       alert(error.response.data.message);
     }
 
-    localStorage.removeItem('token');
+    googleLogout();
+    localStorage.removeItem('user');
     setUser(0);
     navigate(pages.signIn)
   }
