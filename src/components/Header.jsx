@@ -52,6 +52,7 @@ const ContainerHeader = styled.header`
   align-items: center;
   padding: 0 20px;
   background-color: #F6E4C4;
+  color: #1F1712;
 
   img {
     height: 90%;

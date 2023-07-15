@@ -69,6 +69,9 @@ export default function CartPage() {
 
 const CartContainer = styled.div`
   height: 100vh;
+  margin-top: 70px;
+  background-color: #1F1712;
+  color: white;
 `;
 
 const CartItem = styled.div`

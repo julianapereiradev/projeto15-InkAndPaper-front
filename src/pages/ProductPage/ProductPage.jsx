@@ -57,8 +57,8 @@ export default function ProductPage() {
 }
 
 const ProductContainer = styled.div`
-  margin-top: 15vh;
-  height: 85vh;
+  height: 100vh;
+  margin-top: 70px;
   background-color: #1F1712;
   display: flex;
   justify-content: center;
