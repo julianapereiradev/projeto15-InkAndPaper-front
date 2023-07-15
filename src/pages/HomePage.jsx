@@ -62,8 +62,10 @@ export default function HomePage() {
 }
 
 const HomeContainer = styled.div`
-  margin-top: 16vh;
   height: 100vh;
+  margin-top: 70px;
+  background-color: #1F1712;
+  color: white;
 `
 
 const ProductContainer = styled.div`
