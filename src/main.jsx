@@ -4,6 +4,7 @@ import App from './App.jsx'
 import ResetStyle from './style/ReseStyle.js'
 import GlobalStyle from './style/GlobalStyle.js'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import './index.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

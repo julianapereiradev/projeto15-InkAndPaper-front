@@ -11,6 +11,7 @@ import { pages } from "./routes/routes"
 import { useState } from "react"
 import '@ionic/react/css/core.css'
 import { setupIonicReact } from '@ionic/react'
+import './App.css'
 
 setupIonicReact();
 

@@ -36,6 +36,7 @@ export default function CartPage() {
     <h1>Ta carregando</h1>
     )
   }
+
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => {
       return total + (item.quantity*item.price);
