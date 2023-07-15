@@ -3,13 +3,17 @@ import styled from "styled-components"
 import HomePage from "./pages/HomePage"
 import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
-import ProductPage from "./pages/ProductPage"
+import ProductPage from "./pages/ProductPage/ProductPage"
 import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
 import AuthContext from "./contexts/AuthContext"
 import { pages } from "./routes/routes"
 import { useState } from "react"
-import './App.css'
+import '@ionic/react/css/core.css'
+import { setupIonicReact } from '@ionic/react'
+
+setupIonicReact();
+
 
 export default function App() {
   const [user, setUser] = useState(0);

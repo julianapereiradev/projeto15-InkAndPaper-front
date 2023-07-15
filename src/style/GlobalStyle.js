@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Inika', serif;
         font-style: normal;
         font-weight: 400;
+        box-sizing: border-box;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
     }
 `
 
