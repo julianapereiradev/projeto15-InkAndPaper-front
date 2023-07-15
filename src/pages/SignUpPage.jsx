@@ -140,19 +140,19 @@ align-items: center;
 
 const SignUpBox = styled.div`
 width: 1400px;
-height: 800px;
+height: 802px;
 border: 1px solid #F6E4C4;
 `
 
 const LeftBox = styled.div`
 width: 43%;
 float: left;
-height: 800px;
+height: 802px;
 `
 const RightBox = styled.div`
 width: 57%;
 float: right;
-height: 800px;
+height: 802px;
 `
 
 const FormBox = styled.div`
@@ -202,10 +202,10 @@ button {
   border: none;
   border-radius: 8px;
   height: 50px;
-  font-size: 22px;
+  font-size: 19px;
   cursor: pointer;
   margin-bottom: 20px;
-  width: 130px;
+  width: 250px;
   align-self: center;
   display: flex;
   justify-content: center; 
@@ -217,4 +217,5 @@ const LinkToSignIn = styled(Link)`
   align-self: center;
   font-size: 18px;
   color: #F6E4C4;
+  text-decoration: underline;
 `;
