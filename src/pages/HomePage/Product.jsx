@@ -16,7 +16,7 @@ export default function Product({ item }) {
             <Image src={item.image} />
             <TextBox>
                 <div>{item.title}</div>
-                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price}</div>
+                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </TextBox>
         </ProductBox>
     )

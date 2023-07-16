@@ -46,7 +46,7 @@ export default function CartPage() {
       return total + item.quantity * item.price;
     }, 0);
 
-    return totalPrice.toFixed(2);
+    return totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
   };
 
   const removeItem = async (productId) => {
@@ -83,8 +83,8 @@ export default function CartPage() {
           <Details>          
             <h3>{item.title}</h3>
             <p>Quantidade: {item.quantity}</p>
-            <p>Preço unitário: {item.price}</p>
-            <p>Preço total: {item.quantity * item.price}</p>
+            <p>Preço unitário: R$ {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+            <p>Preço total: R$ {Number(item.quantity * item.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
           </Details>
           <Remove onClick={() => removeItem(item.productId)}><IonIcon icon={trashOutline}/></Remove>
         </CartItem>
