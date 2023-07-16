@@ -34,11 +34,13 @@ export default function HomePage() {
     <HomeContainer>
       <Header />
       <ProductContainer>
+        <ProductMain>
         {products ? (
           products.map(item => <Product key={item._id} item={item} />)
         ) : (
           <ThreeDots type="ThreeDots" color="#F6E4C4" height={90} width={150} />
         )}
+        </ProductMain>
       </ProductContainer>
     </HomeContainer>
   )
@@ -49,13 +51,17 @@ const HomeContainer = styled.div`
   background-color: #1F1712;
   color: white;
   display: flex;
-  justify-content: center;
 `
 
 const ProductContainer = styled.div`
   width: 100%;
   display: flex;
+
+`
+
+const ProductMain = styled.div`
+  display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-top: 10px;
+  justify-content: center;
+  margin: 10px;
 `

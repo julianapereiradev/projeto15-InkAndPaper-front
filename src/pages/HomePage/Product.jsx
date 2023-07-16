@@ -16,7 +16,7 @@ export default function Product({ item }) {
             <Image src={item.image} />
             <TextBox>
                 <div>{item.title}</div>
-                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price}</div>
+                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </TextBox>
         </ProductBox>
     )
@@ -51,15 +51,13 @@ const Image = styled.img`
 
 const TextBox = styled.div`
     padding-left: 4px;
+    padding-right: 4px;
     border-radius: 2px;
     width: 12.7vw;
-    height: 7vh;
+    height: 10vh;
     border: 2px solid #F6E4C4;
     font-size: 1.0vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 `

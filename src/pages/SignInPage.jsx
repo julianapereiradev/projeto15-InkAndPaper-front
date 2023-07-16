@@ -144,13 +144,6 @@ export default function SignInPage() {
   )
 }
 
-const MyCustomButton = styled.button`
-  height: 10vh;
-  width: 15vw;
-  background-color: red;
-  color: white;
-`
-
 const SignInContainer = styled.div`
 background-color: #1F1712;
 width: 100vw;
@@ -201,8 +194,8 @@ align-items: center;
 const InputBox = styled.div`
 display: flex;
 flex-direction: column;
-padding-left: 250px;
-padding-right: 250px;
+width: 400px;
+align-self: center;
 
 input {
   margin-bottom: 30px;
