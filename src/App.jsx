@@ -19,10 +19,11 @@ setupIonicReact();
 
 export default function App() {
   const [user, setUser] = useState(0);
+  const [cartNumber, setCartNumber] = useState(0);
 
   return (
     <PagesContainer>
-      <AuthContext.Provider value={{ user, setUser }}>
+      <AuthContext.Provider value={{ user, setUser, cartNumber, setCartNumber }}>
       <BrowserRouter>
         <Routes>
           <Route path={pages.signIn} element={<SignInPage />} />
