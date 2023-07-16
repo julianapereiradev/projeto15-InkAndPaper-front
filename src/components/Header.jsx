@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { headersAuth, pages, requisitions } from "../routes/routes"
 import axios from "axios"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import AuthContext from "../contexts/AuthContext"
 import { cartOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
@@ -12,7 +12,17 @@ import logoheader from "../images/logoheader.png"
 export default function Header() {
 
   const navigate = useNavigate()
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser, cartNumber, setCartNumber } = useContext(AuthContext)
+
+  useEffect(() => {
+    axios.get(requisitions.getUserCart, headersAuth(user.token))
+      .then(res => {
+        let quantity = 0;
+        res.data.forEach(item => quantity = quantity + item.quantity)
+        setCartNumber(quantity)
+      })
+      .catch(error => alert(error.data))
+  })
 
   async function logout() {
     try {
@@ -32,7 +42,7 @@ export default function Header() {
       <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
       <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
       <div>
-        <IconNumberCart style={{fontSize: '20px'}}>137</IconNumberCart>
+        <IconNumberCart style={{fontSize: '20px'}}>{cartNumber}</IconNumberCart>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
       </div>
