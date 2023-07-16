@@ -3,16 +3,24 @@ import styled from "styled-components";
 import axios from "axios";
 import Header from "../components/Header";
 import AuthContext from "../contexts/AuthContext";
-import { requisitions } from "../routes/routes";
+import { headersAuth, pages, requisitions } from "../routes/routes";
 import { IonIcon } from '@ionic/react';
 import { trashOutline } from 'ionicons/icons';
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
+  const [reloaded, setReloaded] = useState(false);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchCartItems();
+  }, [reloaded]);
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload); 
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
 
   const fetchCartItems = async () => {
@@ -31,18 +39,33 @@ export default function CartPage() {
     }
   };
 
-  if(cartItems === undefined) {
-    return (
-    <h1>Ta carregando</h1>
-    )
-  }
-
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => {
-      return total + (item.quantity*item.price);
+      return total + item.quantity * item.price;
     }, 0);
 
     return totalPrice.toFixed(2);
+  };
+
+  const removeItem = async (productId) => {
+    try {
+      await axios.delete(requisitions.removeItems, {
+        data: {
+          productId: productId,
+        },
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      setReloaded(!reloaded); 
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleBeforeUnload = (event) => {
+    event.preventDefault();
+    event.returnValue = ''; 
   };
 
   return (
@@ -58,7 +81,7 @@ export default function CartPage() {
             <p>Preço unitário: {item.price}</p>
             <p>Preço total: {item.quantity * item.price}</p>
           </Details>
-          <Remove><IonIcon icon={trashOutline}/></Remove>
+          <Remove onClick={() => removeItem(item.productId)}><IonIcon icon={trashOutline}/></Remove>
         </CartItem>
       ))}
       <Total>Total: R$ {calculateTotalPrice()}</Total>
@@ -66,6 +89,7 @@ export default function CartPage() {
     </CartContainer>
   );
 }
+
 
 const CartContainer = styled.div`
   height: 100vh;
