@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <ContainerHeader>
       <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
-      <h1 className="font-brit size">Ink & Paper</h1>
+      <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
       <div>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>

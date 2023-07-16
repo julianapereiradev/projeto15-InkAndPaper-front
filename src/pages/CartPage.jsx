@@ -71,7 +71,6 @@ export default function CartPage() {
   return (
     <CartContainer>
       <Header />
-      <h1>Página de Carrinho</h1>
       {cartItems.map((item) => (
         <CartItem key={item.productId}>
           <CartImage src={item.image} alt={item.title}></CartImage>
@@ -84,18 +83,19 @@ export default function CartPage() {
           <Remove onClick={() => removeItem(item.productId)}><IonIcon icon={trashOutline}/></Remove>
         </CartItem>
       ))}
+      <End>
       <Total>Total: R$ {calculateTotalPrice()}</Total>
-      <Finish>Finalizar compra</Finish>
+      <Finish>Finalizar</Finish>
+      </End>
     </CartContainer>
   );
 }
 
 
 const CartContainer = styled.div`
-  height: 100vh;
-  margin-top: 70px;
+  margin-top: 80px;
   background-color: #1F1712;
-  color: white;
+  color: #F6E4C4;
 `;
 
 const CartItem = styled.div`
@@ -105,16 +105,33 @@ const CartItem = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const CartImage = styled.img`
-  height: 100px;
-  width: 100px;
+  width: 120px;
 `
 const Details = styled.div`
+width: 100%;
+text-align: center;
+font-size: 20px;
+line-height: 170%;
+
+h3 {
+  font-weight: bold;
+}
+`
+const End = styled.div`
+font-size: 25px;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+margin-right: 25px;
 `
 
 const Total = styled.div`
+margin-bottom: 20px;
+font-weight: bold;
 
 `
 const Remove = styled.div`
@@ -122,5 +139,11 @@ const Remove = styled.div`
 
 `
 const Finish = styled.button`
-
+  color: #1F1712;
+  background-color: #F6E4C4;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 25px;
+  cursor: pointer;
 `
