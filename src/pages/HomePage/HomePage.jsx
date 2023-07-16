@@ -8,6 +8,7 @@ import axios from "axios";
 import { validateUser } from "../../constants/functions";
 import Product from "./Product";
 import { ThreeDots } from "react-loader-spinner";
+import Logo from "../../components/Logo";
 
 export default function HomePage() {
 
@@ -33,13 +34,14 @@ export default function HomePage() {
   return (
     <HomeContainer>
       <Header />
+      
       <ProductContainer>
         <ProductMain>
-        {products ? (
-          products.map(item => <Product key={item._id} item={item} />)
-        ) : (
-          <ThreeDots type="ThreeDots" color="#F6E4C4" height={90} width={150} />
-        )}
+          {products ? (
+            products.map(item => <Product key={item._id} item={item} />)
+          ) : (
+            <ThreeDots type="ThreeDots" color="#F6E4C4" height={90} width={150} />
+          )}
         </ProductMain>
       </ProductContainer>
     </HomeContainer>
@@ -51,6 +53,10 @@ const HomeContainer = styled.div`
   background-color: #1F1712;
   color: white;
   display: flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 `
 
 const ProductContainer = styled.div`

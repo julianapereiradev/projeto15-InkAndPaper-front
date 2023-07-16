@@ -8,6 +8,7 @@ import { cartOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
 import { googleLogout } from "@react-oauth/google"
 import logoheader from "../images/logoheader.png"
+import Logo from "./Logo"
 
 export default function Header() {
 
