@@ -32,6 +32,7 @@ export default function Header() {
       <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
       <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
       <div>
+        <IconNumberCart style={{fontSize: '20px'}}>137</IconNumberCart>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
       </div>
@@ -68,8 +69,18 @@ const ContainerHeader = styled.header`
     cursor: pointer;
   }
 `
-
-// const BrandName = styled.h1` 
-//   font-family: 'Island Moments', cursive;
-//   font-size: 54px;
-// `
+const IconNumberCart = styled.div`
+  background-color: #1F1712;;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F6E4C4;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 90px;
+  z-index: 1;
+`
