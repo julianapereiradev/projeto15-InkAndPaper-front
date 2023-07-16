@@ -4,7 +4,8 @@ export const pages = {
     home: '/home',
     product: '/produto/',
     shoppingCart: '/carrinho',
-    checkout: '/pagamento'
+    payment: '/pagamento',
+    checkout: '/checkout',
 }
 
 const API_URL = 'http://localhost:5000';
@@ -18,7 +19,8 @@ export const requisitions = {
     postShoppingCart: API_URL + '/post-cart/',
     logout: API_URL + '/logout',
     getCart: API_URL + '/getCart',
-    getUserCart: API_URL + '/cart/items'
+    getUserCart: API_URL + '/cart/items',
+    removeItems: API_URL + '/cart/items'
 }
 
 export function headersAuth(token) {
