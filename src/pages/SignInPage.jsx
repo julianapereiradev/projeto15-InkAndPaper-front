@@ -80,7 +80,7 @@ export default function SignInPage() {
     <SignInContainer>
     <SignInBox>
       <LeftBox>
-      <img src={welcomeImage} style={{maxHeight: '800px'}} />
+      <img src={welcomeImage} />
       </LeftBox>
       
       <RightBox>
@@ -153,6 +153,7 @@ const MyCustomButton = styled.button`
 
 const SignInContainer = styled.div`
 background-color: #1F1712;
+width: 100vw;
 height: 100vh;
 display: flex;
 justify-content: center;
@@ -160,28 +161,35 @@ align-items: center;
 `
 
 const SignInBox = styled.div`
-width: 1400px;
-height: 802px;
-border: 1px solid #F6E4C4;
+width: 100vw;
+height: 100vh;
+/* border: 1px solid #F6E4C4; */
 `
 
 const LeftBox = styled.div`
-width: 43%;
+/* background-color: red; */
+width: 40%;
 float: left;
-height: 802px;
+/* height: 802px; */
+
+img {
+  height: 100vh;
+}
+
 `
 const RightBox = styled.div`
-width: 57%;
+width: 60%;
 float: right;
-height: 802px;
+/* height: 802px; */
+/* background-color: green; */
 `
 
 const FormBox = styled.div`
 background-color: #1F1712;
-height: 800px;
+height: 100vh;
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: space-evenly;
 `
 
 const TopBox = styled.div`
@@ -193,8 +201,8 @@ align-items: center;
 const InputBox = styled.div`
 display: flex;
 flex-direction: column;
-padding-left: 100px;
-padding-right: 100px;
+padding-left: 250px;
+padding-right: 250px;
 
 input {
   margin-bottom: 30px;
@@ -216,7 +224,7 @@ input::placeholder {
 const BottomBox = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 30px;
+/* margin-bottom: 30px; */
 
 button {
   background-color: #F6E4C4;
