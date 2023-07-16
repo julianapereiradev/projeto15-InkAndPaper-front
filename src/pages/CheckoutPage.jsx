@@ -4,13 +4,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
 import { requisitions, pages } from '../routes/routes';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
   const { user } = useContext(AuthContext);
   const [checkoutItems, setCheckoutItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCheckoutItems();
@@ -73,7 +74,7 @@ export default function CheckoutPage() {
         ))}
       </Info>
       <ButtonDiv>
-        <Back onClick={goToHomepage}><strong>Voltar à loja</strong></Back>
+        <Back onClick={goToHomepage}>Voltar à loja</Back>
       </ButtonDiv>
     </Container>
   );
