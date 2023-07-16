@@ -6,11 +6,13 @@ import AuthContext from "../contexts/AuthContext";
 import { headersAuth, pages, requisitions } from "../routes/routes";
 import { IonIcon } from '@ionic/react';
 import { trashOutline } from 'ionicons/icons';
+import { useNavigate } from "react-router-dom"
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [reloaded, setReloaded] = useState(false);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCartItems();
@@ -68,6 +70,10 @@ export default function CartPage() {
     event.returnValue = ''; 
   };
 
+  const goToPaymentPage = () => {
+    navigate(pages.payment);
+  };
+
   return (
     <CartContainer>
       <Header />
@@ -85,7 +91,7 @@ export default function CartPage() {
       ))}
       <End>
       <Total>Total: R$ {calculateTotalPrice()}</Total>
-      <Finish>Finalizar</Finish>
+      <Finish onClick={ ()=> goToPaymentPage() }>Finalizar</Finish>
       </End>
     </CartContainer>
   );
