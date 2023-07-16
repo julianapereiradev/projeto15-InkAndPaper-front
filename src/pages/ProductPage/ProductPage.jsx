@@ -57,8 +57,7 @@ export default function ProductPage() {
 }
 
 const ProductContainer = styled.div`
-  height: 100vh;
-  margin-top: 70px;
+  margin-top: 180px;
   background-color: #1F1712;
   display: flex;
   justify-content: center;
@@ -72,9 +71,8 @@ const ProductBox = styled.div`
   justify-content: space-evenly;
 
   img {
-    width: 28vw;
     height: 73vh;
-    border: 5px solid #F6E4C4;
+    border: 3px solid #F6E4C4;
   }
 `
 

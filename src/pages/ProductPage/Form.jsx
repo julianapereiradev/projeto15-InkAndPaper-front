@@ -81,30 +81,31 @@ const FormSC = styled.form`
   font-family: Inika, serif;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   > div {
     height: 100%;
-    width: 24vw;
+    width: 18vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
   }
 `
 
 const SubmitButton = styled.button`
-  height: 10vh;
-  width: 100%;
-  font-size: 3.6vh;
+  height: 8vh;
+  font-size: 2.5vh;
   color: #000000;
   background-color: #F6E4C4;
   border-radius: 10px;
+  width: 100%;
 `
 
 const ProductQuantity = styled.div`
-  width: 24vw;
-  height: 6.3vh;
+  width: 12vw;
+  height: 6vh;
   position: relative;
   background-color: #fff;
   display: flex;
@@ -119,8 +120,8 @@ const ProductQuantity = styled.div`
   }
 `
 const ChangeQuantityButton = styled.button`
-  height: 6.3vh;
-  width: 6.3vh;
+  height: 6vh;
+  width: 5vh;
   text-align: center;
   font-size: 4vh;
   border-radius: 10px;
@@ -132,9 +133,9 @@ const ChangeQuantityButton = styled.button`
 const Price = styled.span`
   display: flex;
   color: #fff;
-  font-size: 4.5vh;
+  font-size: 3.0vh;
 
   strong {
-    font-size: 9vh;
+    font-size: 8vh;
   }
 `

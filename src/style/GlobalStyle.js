@@ -9,8 +9,9 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+
     body {
-        background-color: #1F1712;
+      background-color: #1F1712;
     }
 
     a {
