@@ -62,7 +62,7 @@ export default function Form({id, token, product}) {
 
             </div>
             <div>
-                <Price>R$ <strong>{product.price}</strong></Price>
+                <Price>R$ <strong>{(shopQauntity*product.price).toFixed(2)}</strong></Price>
                 <SubmitButton
                     type="submit"
                     disabled={!mayISubmit}
