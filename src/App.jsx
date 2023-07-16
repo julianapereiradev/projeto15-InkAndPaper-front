@@ -7,6 +7,7 @@ import ProductPage from "./pages/ProductPage/ProductPage"
 import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
 import AuthContext from "./contexts/AuthContext"
+import PaymentPage from "./pages/PaymentPage"
 import { pages } from "./routes/routes"
 import { useState } from "react"
 import '@ionic/react/css/core.css'
@@ -29,6 +30,7 @@ export default function App() {
           <Route path={pages.home} element={<HomePage />} />
           <Route path={pages.product + ':id'} element={<ProductPage />} />
           <Route path={pages.shoppingCart} element={<CartPage />} />
+          <Route path={pages.payment} element={<PaymentPage />} />
           <Route path={pages.checkout} element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>

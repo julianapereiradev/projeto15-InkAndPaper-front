@@ -20,7 +20,9 @@ export const requisitions = {
     logout: API_URL + '/logout',
     getCart: API_URL + '/getCart',
     getUserCart: API_URL + '/cart/items',
-    removeItems: API_URL + '/cart/items'
+    removeItems: API_URL + '/cart/items',
+    payment: API_URL + '/payment',
+    clearCart: API_URL + '/clear/cart'
 }
 
 export function headersAuth(token) {
