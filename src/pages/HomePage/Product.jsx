@@ -60,4 +60,5 @@ const TextBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: #39332a;
 `
