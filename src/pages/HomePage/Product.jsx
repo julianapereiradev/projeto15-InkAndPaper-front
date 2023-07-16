@@ -51,9 +51,10 @@ const Image = styled.img`
 
 const TextBox = styled.div`
     padding-left: 4px;
+    border-radius: 2px;
     width: 12.7vw;
     height: 7vh;
-    border: 3px solid #F6E4C4;
+    border: 2px solid #F6E4C4;
     font-size: 1.0vw;
     display: flex;
     flex-direction: column;
