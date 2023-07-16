@@ -38,31 +38,31 @@ export default function PaymentPage() {
     };
     const handleFinishOrder = async () => {
         if (!selectedPayment || !address) {
-          alert('Selecione o método de pagamento e preencha o endereço');
-          return;
+            alert('Selecione o método de pagamento e preencha o endereço');
+            return;
         }
-      
+
         setIsLoading(true);
         try {
-          await postPaymentData();
-          setIsLoading(false);
+            await postPaymentData();
+            setIsLoading(false);
         } catch (error) {
-          setIsLoading(false);
-          console.error('Erro ao finalizar a compra:', error);
+            setIsLoading(false);
+            console.error('Erro ao finalizar a compra:', error);
         }
     };
-      
-      const postPaymentData = async () => {
+
+    const postPaymentData = async () => {
         const TOKEN = user.token;
         try {
-          const response = await axios.post( requisitions.payment,
-            { selectedPayment, address }, {headers: { Authorization: `Bearer ${TOKEN}`,}, });
-          console.log('Dados de pagamento enviados com sucesso:', response.data);
-          navigate(pages.home);
+            const response = await axios.post(requisitions.payment,
+                { paymentData: selectedPayment, address }, { headers: { Authorization: `Bearer ${TOKEN}`, }, });
+            console.log('Dados de pagamento enviados com sucesso:', response.data);
+            navigate(pages.checkout);
         } catch (error) {
-          console.error('Erro ao enviar dados de pagamento:', error);
+            console.error('Erro ao enviar dados de pagamento:', error);
         }
-      };
+    };
 
     const fetchAddressByCep = async (cep) => {
         try {
@@ -74,6 +74,10 @@ export default function PaymentPage() {
             console.error('Erro ao buscar endereço:', error);
         }
     };
+
+    const returnPayment = async () => {
+        navigate(pages.checkout);
+    }
 
     return (
         <CheckoutContainer>
@@ -101,21 +105,21 @@ export default function PaymentPage() {
                 </PaymentOption>
             </PaymentContainer>
             {selectedPayment === 'PIX' ? (
-      <PaymentDataContainer>
-        <h2>Pagamento via PIX</h2>
-        <p>Número PIX: 0123456789 </p>
-      </PaymentDataContainer>
-    ) : selectedPayment === 'Boleto' ? (
-      <PaymentDataContainer>
-        <h2>Pagamento via Boleto Bancário</h2>
-        <p>Número do Boleto: 0123456789</p>
-      </PaymentDataContainer>
-    ) : selectedPayment === 'Cartão' ? (
-      <PaymentDataContainer>
-        <h2>Pagamento com Cartão de Crédito</h2>
-        {/* ... Campos do Formulário do Cartão ... */}
-      </PaymentDataContainer>
-    ) : null}
+                <PaymentDataContainer>
+                    <h2>Pagamento via PIX</h2>
+                    <p>Número PIX: 0123456789 </p>
+                </PaymentDataContainer>
+            ) : selectedPayment === 'Boleto' ? (
+                <PaymentDataContainer>
+                    <h2>Pagamento via Boleto Bancário</h2>
+                    <p>Número do Boleto: 0123456789</p>
+                </PaymentDataContainer>
+            ) : selectedPayment === 'Cartão' ? (
+                <PaymentDataContainer>
+                    <h2>Pagamento com Cartão de Crédito</h2>
+                    {/* ... Campos do Formulário do Cartão ... */}
+                </PaymentDataContainer>
+            ) : null}
 
             <AddressContainer>
                 <h2>Endereço de Entrega</h2>
@@ -139,7 +143,7 @@ export default function PaymentPage() {
             </AddressContainer>
 
             <ButtonContainer>
-                <BackButton>Voltar</BackButton>
+                <BackButton onClick={returnPayment}>Voltar</BackButton>
                 <FinishButton onClick={handleFinishOrder} disabled={isLoading}>
                     {isLoading ? 'Processando...' : 'Finalizar Pedido'}
                 </FinishButton>

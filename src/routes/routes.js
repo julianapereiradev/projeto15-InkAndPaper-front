@@ -21,7 +21,8 @@ export const requisitions = {
     getUserCart: API_URL + '/cart/items',
     removeItems: API_URL + '/cart/items',
     payment: API_URL + '/payment',
-    clearCart: API_URL + '/clear/cart'
+    clearCart: API_URL + '/clear/cart',
+    getCheckout: API_URL +'/checkout'
 }
 
 export function headersAuth(token) {
