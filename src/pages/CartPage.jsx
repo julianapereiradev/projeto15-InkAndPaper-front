@@ -35,7 +35,7 @@ export default function CartPage() {
         },
       };
 
-      const response = await axios.get(requisitions.getUserCart, config);
+      const response = await axios.get(requisitions.getUserCart, headersAuth(user.token), config);
       const data = response.data;
       setCartItems(data);
     } catch (error) {
@@ -103,12 +103,12 @@ export default function CartPage() {
 const CartContainer = styled.div`
   margin-top: 80px;
   background-color: #1F1712;
-  color: #F6E4C4;
+  color: #FFFFFF;
 `;
 
 const CartItem = styled.div`
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid  #F6E4C4;
   padding: 10px;
   display: flex;
   flex-direction: row;

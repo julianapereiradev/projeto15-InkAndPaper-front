@@ -11,7 +11,6 @@ import { ThreeDots } from "react-loader-spinner";
 export default function CheckoutPage() {
   const { user, setUser } = useContext(AuthContext);
   const [checkoutItems, setCheckoutItems] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,15 +27,10 @@ export default function CheckoutPage() {
       };
       const response = await axios.get(requisitions.getCheckout, config);
       setCheckoutItems(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-
-  if (isLoading) {
-    return   <ThreeDots type="ThreeDots" color="#1F1712" height={20} width={50} />
-  }
 
   const goToHomepage = () => {
     navigate(pages.home);
@@ -50,8 +44,7 @@ export default function CheckoutPage() {
         <h2>Confira abaixo o resumo do seu pedido:</h2>
       </Title>
       <Info>
-          <CheckoutItem key={checkoutItems._id}>
-            
+        {checkoutItems ? (<CheckoutItem key={checkoutItems._id}>  
             <Details>
             <h3>Informações Gerais:</h3>
               <p><strong>Data e hora da compra:</strong> {checkoutItems.purchaseDateTime}</p>
@@ -66,7 +59,8 @@ export default function CheckoutPage() {
                 <p>Preço total do item: R$ {((cartItem.price) * (cartItem.quantity)).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
               </CartItem>
             ))}
-          </CheckoutItem>
+          </CheckoutItem>) : (  <ThreeDots type="ThreeDots" color="#F6E4C4" height={90} width={150} />)}
+          
       </Info>
       <ButtonDiv>
         <Back onClick={goToHomepage}>Voltar à loja</Back>
