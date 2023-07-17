@@ -88,7 +88,7 @@ export default function CartPage() {
             <p>Preço unitário: R$ {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
             <p>Preço total: R$ {Number(item.quantity * item.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
           </Details>
-          <Remove onClick={() => removeItem(item.productId)}><IonIcon icon={trashOutline}/></Remove>
+          <Remove onClick={() => removeItem(item.productId)} title="Retirar do carrinho"><IonIcon icon={trashOutline}/></Remove>
         </CartItem>
       ))}
       <End>

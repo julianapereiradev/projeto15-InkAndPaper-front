@@ -8,7 +8,6 @@ import { cartOutline, clipboardOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
 import { googleLogout } from "@react-oauth/google"
 import logoheader from "../images/logoheader.png"
-import Logo from "./Logo"
 
 export default function Header() {
 
@@ -40,13 +39,13 @@ export default function Header() {
 
   return (
     <ContainerHeader>
-      <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)}/>
-      <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
+      <img src={logoheader} alt="Ir para home page" onClick={() => navigate(pages.home)} title="Ir para home"/>
+      <h1 className="font-brit size" onClick={() => navigate(pages.home)} title="Ir para home">Ink & Paper</h1>
       <div>
         <IconNumberCart style={{fontSize: '20px'}}>{cartNumber}</IconNumberCart>
-        <IonIcon icon={clipboardOutline} onClick={() => navigate(pages.myorders)}></IonIcon>
-        <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
-        <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
+        <IonIcon icon={clipboardOutline} onClick={() => navigate(pages.myorders)} title="Seus pedidos"></IonIcon>
+        <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)} title="Carrinho"></IonIcon>
+        <IonIcon icon={logOutOutline} onClick={() => logout()} title="Sair"></IonIcon>
       </div>
     </ContainerHeader>
   )
