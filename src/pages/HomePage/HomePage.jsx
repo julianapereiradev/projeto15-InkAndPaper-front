@@ -8,7 +8,6 @@ import axios from "axios";
 import { validateUser } from "../../constants/functions";
 import Product from "./Product";
 import { ThreeDots } from "react-loader-spinner";
-import Logo from "../../components/Logo";
 
 export default function HomePage() {
 
