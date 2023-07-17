@@ -63,7 +63,7 @@ export default function CheckoutPage() {
               <CartItem key={cartItem.productId}>
                 <p>Título: {cartItem.title}</p>
                 <p>Quantidade: {cartItem.quantity}</p>
-                <p>Preço total do item: {((cartItem.price) * (cartItem.quantity)).toFixed(2)}</p>
+                <p>Preço total do item: R$ {((cartItem.price) * (cartItem.quantity)).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
               </CartItem>
             ))}
           </CheckoutItem>
