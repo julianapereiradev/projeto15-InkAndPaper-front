@@ -191,6 +191,7 @@ align-items: center;
 `
 
 const InputBox = styled.div`
+margin-top: 30px;
 display: flex;
 flex-direction: column;
 width: 400px;
@@ -210,6 +211,7 @@ input::placeholder {
   color: #F6E4C4;
   font-size: 16px;
   font-style: italic;
+  padding-left: 10px;
 }
 `
 

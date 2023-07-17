@@ -132,6 +132,7 @@ export default function SignUpPage() {
 
 const SignUpContainer = styled.div`
 background-color: #1F1712;
+width: 100vw;
 height: 100vh;
 display: flex;
 justify-content: center;
@@ -139,28 +140,34 @@ align-items: center;
 `
 
 const SignUpBox = styled.div`
-width: 1400px;
-height: 802px;
-border: 1px solid #F6E4C4;
+width: 100vw;
+height: 100vh;
 `
 
 const LeftBox = styled.div`
-width: 43%;
+width: 40vw;
 float: left;
-height: 802px;
+
+img {
+  height: 100vh;
+}
 `
 const RightBox = styled.div`
-width: 57%;
+width: 60vw;
+height: 100%;
 float: right;
-height: 802px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #1F1712;
 `
 
 const FormBox = styled.div`
 background-color: #1F1712;
-height: 800px;
+height: 100%;
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: space-evenly;
 `
 
 const TopBox = styled.div`
@@ -170,13 +177,14 @@ align-items: center;
 `
 
 const InputBox = styled.div`
+margin-top: 30px;
 display: flex;
 flex-direction: column;
-padding-left: 100px;
-padding-right: 100px;
+width: 400px;
+align-self: center;
 
 input {
-  margin-top: 20px;
+  margin-bottom: 30px;
   height: 50px;
   border: 1px solid #F6E4C4;
   border-radius: 8px;
@@ -189,13 +197,13 @@ input::placeholder {
   color: #F6E4C4;
   font-size: 16px;
   font-style: italic;
+  padding-left: 10px;
 }
 `
 
 const BottomBox = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 30px;
 
 button {
   background-color: #F6E4C4;
