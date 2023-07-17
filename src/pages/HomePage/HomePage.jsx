@@ -38,7 +38,7 @@ export default function HomePage() {
       <ProductContainer>
         <ProductMain>
           {products ? (
-            products.map(item => <Product key={item._id} item={item} />)
+            products.map(item => <Product key={item._id} item={item}/>)
           ) : (
             <ThreeDots type="ThreeDots" color="#F6E4C4" height={90} width={150} />
           )}

@@ -12,6 +12,7 @@ export default function Product({ item }) {
     return (
         <ProductBox
             onClick={() => openProductId(item._id)}
+            title={item.title}
         >
             <Image src={item.image} />
             <TextBox>
