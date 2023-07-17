@@ -65,7 +65,7 @@ export default function PaymentPage() {
         const TOKEN = user.token;
         try {
             const response = await axios.post(requisitions.payment,
-                { paymentData: selectedPayment, address, addressComp }, { headers: { Authorization: `Bearer ${TOKEN}`, }, });
+                { paymentData: selectedPayment, addressData, addressComp }, { headers: { Authorization: `Bearer ${TOKEN}`, }, });
             console.log('Dados de pagamento enviados com sucesso:', response.data);
             navigate(pages.checkout);
         } catch (error) {
@@ -97,7 +97,6 @@ export default function PaymentPage() {
     return (
         <CheckoutContainer>
             <Header/>
-            <h1>Checkout</h1>
             <SummaryContainer>
                 <h2>Resumo do Pedido</h2>
                 {cartItems.map((item) => (
@@ -135,7 +134,7 @@ export default function PaymentPage() {
                 <h3>{addressData}</h3>
                 <AddressInput
                     type="number"
-                    placeholder="Digite seu endereço"
+                    placeholder="Digite seu CEP"
                     value={address}
                     onChange={handleAddressChange}
                     onBlur={async () => {
@@ -173,6 +172,8 @@ export default function PaymentPage() {
 const CheckoutContainer = styled.div`
   margin-top: 70px;
   padding: 20px;
+  background-color: #1F1712;
+  color: #F6E4C4;
 `;
 const Address = styled.input`
     width: 100%;
@@ -180,6 +181,11 @@ const Address = styled.input`
 `
 const SummaryContainer = styled.div`
   margin-bottom: 20px;
+  h2{
+    color: #F6E4C4;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
 `;
 
 const CartItem = styled.div`
@@ -187,6 +193,8 @@ const CartItem = styled.div`
   justify-content: space-between;
   flex-direction: column;
   margin-bottom: 10px;
+  border: 1px solid #F6E4C4;
+
 `;
 
 const CartItemTitle = styled.span`
@@ -203,23 +211,37 @@ const CartItemQuantity = styled.span`
 
 const PaymentContainer = styled.div`
   margin-bottom: 20px;
+  h2{
+    font-size:30px;
+    margin-bottom: 10px;
+  }
 `;
 
 const PaymentOption = styled.button`
-  background-color: ${(props) => (props.selected ? 'lightblue' : 'transparent')};
+  background-color: ${(props) => (props.selected ? '#F6E4C4' : 'transparent')};
   padding: 10px;
   margin-right: 10px;
   border: none;
   cursor: pointer;
+  border: 1px solid #F6E4C4;
+  color: ${(props) => (props.selected ? '#1F1712' : '#F6E4C4')};
 `;
 
 const AddressContainer = styled.div`
   margin-bottom: 20px;
+  h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  h3{
+    margin-bottom: 10px;
+  }
 `;
 
 const AddressInput = styled.input`
   width: 100%;
   padding: 10px;
+  margin-bottom: 10px;
 `;
 
 const ButtonContainer = styled.div`
@@ -236,16 +258,17 @@ const BackButton = styled.button`
 
 const FinishButton = styled.button`
   padding: 10px 20px;
-  background-color: ${(props) => (props.disabled ? '#ccc' : 'lightgreen')};
+  background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
   border: none;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
 const SearchButton = styled.button`
 padding: 10px 20px;
-background-color: ${(props) => (props.disabled ? '#ccc' : 'lightgreen')};
+background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
 border: none;
 cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+margin-bottom: 10px;
 `;
 
 const PaymentDataContainer = styled.div`
@@ -264,5 +287,6 @@ const PaymentDataContainer = styled.div`
 `;
 
 const Total = styled.div`
+border: 1px solid #F6E4C4;
 
 `
