@@ -77,124 +77,123 @@ export default function SignInPage() {
 
   return (
     <SignInContainer>
-    <SignInBox>
-      <LeftBox>
-      <img src={welcomeImage} />
-      </LeftBox>
-      
-      <RightBox>
-      <form onSubmit={SignIn}>
-      <FormBox>
+      <SignInBox>
+        <LeftBox bgImage={welcomeImage} />
 
-        <TopBox >
-        <Logo />
-        <div className="font-brit">Login</div>
-        </TopBox>
-        
-        <InputBox>
-        <input
-          type="email"
-          autoComplete="username"
-          placeholder="E-mail"
-          required
-          disabled={disable}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <RightBox>
+          <form onSubmit={SignIn}>
+            <FormBox>
 
-        <input
-          type="password"
-          placeholder="Senha"
-          autoComplete="new-password"
-          required
-          disabled={disable}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+              <TopBox >
+                <Logo />
+                <div className="font-brit">Login</div>
+              </TopBox>
 
-        </InputBox>
+              <InputBox>
+                <input
+                  type="email"
+                  autoComplete="username"
+                  placeholder="E-mail"
+                  required
+                  disabled={disable}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
 
-        <BottomBox>
-        <button
-        type="submit" 
-        disabled={disable}
-        >
-          {disable ? (
-            <ThreeDots type="ThreeDots" color="#1F1712" height={20} width={50} />
-          ) : (
-            "Entrar"
-          )}
-        </button>
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  autoComplete="new-password"
+                  required
+                  disabled={disable}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
 
-      <button onClick={() => login()}>
-        Entrar com < br/> Google 🚀
-      </button>
-        <LinkToSignUp to={pages.signUp}>
-        Primeira vez? Cadastre-se!
-      </LinkToSignUp>
-      </BottomBox>
+              </InputBox>
+
+              <BottomBox>
+                <button
+                  type="submit"
+                  disabled={disable}
+                >
+                  {disable ? (
+                    <ThreeDots type="ThreeDots" color="#1F1712" height={20} width={50} />
+                  ) : (
+                    "Entrar"
+                  )}
+                </button>
+
+                <button onClick={() => login()}>
+                  Entrar com < br /> Google 🚀
+                </button>
+                <LinkToSignUp to={pages.signUp}>
+                  Primeira vez? Cadastre-se!
+                </LinkToSignUp>
+              </BottomBox>
 
 
-      </FormBox>
-      </form>
-      </RightBox>
-    </SignInBox>
+            </FormBox>
+          </form>
+        </RightBox>
+      </SignInBox>
     </SignInContainer>
   )
 }
 
 const SignInContainer = styled.div`
-background-color: #1F1712;
-width: 100vw;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
+  background-color: #1F1712;
+  width: 100vw;
+  height: 100%;
+  display: flex;
 `
 
 const SignInBox = styled.div`
-width: 100vw;
-height: 100vh;
-/* border: 1px solid #F6E4C4; */
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const LeftBox = styled.div`
-/* background-color: red; */
-width: 40%;
-float: left;
-/* height: 802px; */
-
-img {
-  height: 100vh;
-}
-
+  width: 40%;
+  height: 100%;
+  min-height: 100vh;
+  float: left;
+  background-image: url(${props => props.bgImage});
+  background-size: cover;
 `
 const RightBox = styled.div`
-width: 60%;
-float: right;
-/* height: 802px; */
-/* background-color: green; */
+  width: 60vw;
+  height: 100%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1F1712;
 `
 
 const FormBox = styled.div`
-background-color: #1F1712;
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
+  background-color: #1F1712;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `
 
 const TopBox = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const InputBox = styled.div`
-display: flex;
-flex-direction: column;
-width: 400px;
-align-self: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-self: center;
 
 input {
   margin-bottom: 30px;
@@ -210,13 +209,13 @@ input::placeholder {
   color: #F6E4C4;
   font-size: 16px;
   font-style: italic;
+  padding-left: 10px;
 }
 `
 
 const BottomBox = styled.div`
-display: flex;
-flex-direction: column;
-/* margin-bottom: 30px; */
+  display: flex;
+  flex-direction: column;
 
 button {
   background-color: #F6E4C4;
