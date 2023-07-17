@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import { ThreeDots } from "react-loader-spinner";
 
 
+
 export default function PaymentPage() {
     const { user, setUser } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
@@ -133,6 +134,7 @@ export default function PaymentPage() {
 
             <AddressContainer>
                 <h2>Endereço de Entrega</h2>
+                <h3>• <strong>Endereço encontrado:</strong> {addressData}</h3>
                 <AddressInput
                     type="number"
                     placeholder="Digite seu CEP"
@@ -150,7 +152,7 @@ export default function PaymentPage() {
                     }
                 }}>Buscar CEP</SearchButton>
 
-                <h3>• <strong>Endereço encontrado:</strong> {addressData}</h3>
+
 
                 <Address 
                     type="text"
