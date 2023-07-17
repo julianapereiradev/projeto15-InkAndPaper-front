@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage"
 import ProductPage from "./pages/ProductPage/ProductPage"
 import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage"
+import MyOrders from "./pages/MyOrders"
 import AuthContext from "./contexts/AuthContext"
 import PaymentPage from "./pages/PaymentPage"
 import { pages } from "./routes/routes"
@@ -33,6 +34,7 @@ export default function App() {
           <Route path={pages.shoppingCart} element={<CartPage />} />
           <Route path={pages.payment} element={<PaymentPage />} />
           <Route path={pages.checkout} element={<CheckoutPage />} />
+          <Route path={pages.myorders} element={<MyOrders />} />
         </Routes>
       </BrowserRouter>
       </AuthContext.Provider>

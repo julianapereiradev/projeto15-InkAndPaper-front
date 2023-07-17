@@ -4,7 +4,7 @@ import { headersAuth, pages, requisitions } from "../routes/routes"
 import axios from "axios"
 import { useContext, useEffect } from "react"
 import AuthContext from "../contexts/AuthContext"
-import { cartOutline, logOutOutline } from 'ionicons/icons'
+import { cartOutline, clipboard, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
 import { googleLogout } from "@react-oauth/google"
 import logoheader from "../images/logoheader.png"
@@ -44,6 +44,7 @@ export default function Header() {
       <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
       <div>
         <IconNumberCart style={{fontSize: '20px'}}>{cartNumber}</IconNumberCart>
+        <IonIcon icon={clipboard} onClick={() => navigate(pages.myorders)}></IonIcon>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
       </div>
