@@ -54,7 +54,7 @@ export default function CheckoutPage() {
               <h2><strong>ID do pedido:</strong> {item._id}</h2>
               <p>Data e hora da compra: {item.purchaseDateTime}</p>
               <p>Método de pagamento: {item.paymentData}</p>
-              <p>Endereço: {item.address}</p>
+              <p>Endereço: {item.address} - {item.addressComp}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
             {item.cartItems.map((cartItem) => (

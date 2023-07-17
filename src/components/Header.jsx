@@ -81,6 +81,7 @@ const ContainerHeader = styled.header`
     cursor: pointer;
   }
 `
+
 const IconNumberCart = styled.div`
   background-color: #1F1712;;
   width: 30px;

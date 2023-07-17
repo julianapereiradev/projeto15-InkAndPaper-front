@@ -54,7 +54,7 @@ export default function CheckoutPage() {
               <h2><strong>ID do pedido:</strong> {checkoutItems._id}</h2>
               <p>Data e hora da compra: {checkoutItems.purchaseDateTime}</p>
               <p>Método de pagamento: {checkoutItems.paymentData}</p>
-              <p>Endereço: {checkoutItems.address}</p>
+              <p>Endereço: {checkoutItems.address} - {checkoutItems.addressComp}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
             {checkoutItems && checkoutItems?.cartItems.map((cartItem) => (
@@ -142,4 +142,8 @@ border: 8px;
 `
 const Info = styled.div`
 font-size: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `
