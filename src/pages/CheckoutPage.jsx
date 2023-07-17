@@ -6,6 +6,7 @@ import AuthContext from '../contexts/AuthContext';
 import { requisitions, pages } from '../routes/routes';
 import { useNavigate } from "react-router-dom";
 import { validateUser } from "../constants/functions";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function CheckoutPage() {
   const { user, setUser } = useContext(AuthContext);
@@ -34,7 +35,7 @@ export default function CheckoutPage() {
   };
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return   <ThreeDots type="ThreeDots" color="#1F1712" height={20} width={50} />
   }
 
   const goToHomepage = () => {
@@ -46,15 +47,16 @@ export default function CheckoutPage() {
       <Header />
       <Title>
         <h1>Pedido feito com sucesso!</h1>
-        <h2>Confira abaixo todos os seus pedidos:</h2>
+        <h2>Confira abaixo o resumo do seu pedido:</h2>
       </Title>
       <Info>
           <CheckoutItem key={checkoutItems._id}>
+            
             <Details>
-              <h2><strong>ID do pedido:</strong> {checkoutItems._id}</h2>
-              <p>Data e hora da compra: {checkoutItems.purchaseDateTime}</p>
-              <p>Método de pagamento: {checkoutItems.paymentData}</p>
-              <p>Endereço: {checkoutItems.addressData} - {checkoutItems.addressComp}</p>
+            <h3>Informações Gerais:</h3>
+              <p><strong>Data e hora da compra:</strong> {checkoutItems.purchaseDateTime}</p>
+              <p><strong>Método de pagamento:</strong> {checkoutItems.paymentData}</p>
+              <p><strong>Endereço:</strong> {checkoutItems.addressData} - {checkoutItems.addressComp}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
             {checkoutItems && checkoutItems?.cartItems.map((cartItem) => (
@@ -73,29 +75,11 @@ export default function CheckoutPage() {
   );
 };
 
-const Back = styled.button`
-  background-color: #F6E4C4;
-  color: #1F1712;
-  height: 53px;
-  width: 210px;
-  font-size: 19px;
-  border-radius: 8px;
-`
+
 const Container = styled.div`
   background-color: #1F1712;
   font-family: 'Inika';
-  `;
-
-const CheckoutItem = styled.div`
-  margin-bottom: 30px;
-  color: #F6E4C4;
-  h3{
-    margin-bottom: 10px;
-  }
-`;
-
-const CartItem = styled.div`
-  margin-bottom: 10px;
+  color: #ffffff;
 `;
 
 const Title = styled.div`
@@ -104,8 +88,9 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 20px;
-  margin-top: 70px;
-  color: #F6E4C4;
+margin-top: 70px;
+margin-bottom: 50px;
+
   h1{
     font-size: 48px;
   }
@@ -113,23 +98,44 @@ padding: 20px;
     font-size: 24px;
   }
 `
-const LoadingMessage = styled.div`
-  text-align: center;
-  font-size: 18px;
-  margin-top: 100px;
-`;
 
-const ErrorMessage = styled.div`
-  text-align: center;
-  font-size: 18px;
-  color: red;
-  margin-top: 100px;
+const Info = styled.div`
+font-size: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 22px;
+border: 1px solid #F6E4C4;
+`
+
+const CheckoutItem = styled.div`
+  margin-bottom: 30px;
+  
+  h3{
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  p strong {
+    font-weight: bold;
+  }
 `;
 
 const Details = styled.div`
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
+
+  strong {
+    line-height: 30px;
+  }
 `
+
+const CartItem = styled.div`
+  margin-bottom: 30px;
+  line-height: 30px;
+`;
+
 const ButtonDiv = styled.div`
 display: flex;
 flex-direction: column;
@@ -138,12 +144,14 @@ align-items: center;
 padding: 20px;
 margin-top: 50px;
 border: 8px;
+`
 
+const Back = styled.button`
+  background-color: #F6E4C4;
+  color: #1F1712;
+  height: 53px;
+  width: 210px;
+  font-size: 19px;
+  border-radius: 8px;
 `
-const Info = styled.div`
-font-size: 20px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
+
