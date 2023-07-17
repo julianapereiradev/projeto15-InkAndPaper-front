@@ -6,6 +6,8 @@ import { requisitions, pages } from '../routes/routes';
 import { useNavigate } from "react-router-dom"
 import { validateUser } from '../constants/functions';
 import Header from '../components/Header';
+import { ThreeDots } from "react-loader-spinner";
+
 
 export default function PaymentPage() {
     const { user, setUser } = useContext(AuthContext);
@@ -65,7 +67,7 @@ export default function PaymentPage() {
         const TOKEN = user.token;
         try {
             const response = await axios.post(requisitions.payment,
-                { paymentData: selectedPayment, addressData, addressComp }, { headers: { Authorization: `Bearer ${TOKEN}`, }, });
+                { paymentData: selectedPayment, address, addressComp }, { headers: { Authorization: `Bearer ${TOKEN}`, }, });
             console.log('Dados de pagamento enviados com sucesso:', response.data);
             navigate(pages.checkout);
         } catch (error) {
@@ -162,7 +164,7 @@ export default function PaymentPage() {
             <ButtonContainer>
                 <BackButton onClick={returnPayment}>Voltar</BackButton>
                 <FinishButton onClick={handleFinishOrder} disabled={isLoading}>
-                    {isLoading ? 'Processando...' : 'Finalizar Pedido'}
+                    {isLoading ? (<ThreeDots type="ThreeDots" color="#1F1712" height={10} width={50} />) : 'Finalizar Pedido'}
                 </FinishButton>
             </ButtonContainer>
         </CheckoutContainer>
@@ -265,7 +267,7 @@ border-radius: 5px;
 
 const FinishButton = styled.button`
   padding: 10px 20px;
-  background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
+  background-color: #F6E4C4;
   border: none;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 border-radius: 5px;
