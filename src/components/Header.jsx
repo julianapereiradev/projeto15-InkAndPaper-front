@@ -4,7 +4,7 @@ import { headersAuth, pages, requisitions } from "../routes/routes"
 import axios from "axios"
 import { useContext, useEffect } from "react"
 import AuthContext from "../contexts/AuthContext"
-import { cartOutline, clipboard, logOutOutline } from 'ionicons/icons'
+import { cartOutline, clipboardOutline, logOutOutline } from 'ionicons/icons'
 import { IonIcon } from "@ionic/react"
 import { googleLogout } from "@react-oauth/google"
 import logoheader from "../images/logoheader.png"
@@ -44,7 +44,7 @@ export default function Header() {
       <h1 className="font-brit size" onClick={() => navigate(pages.home)}>Ink & Paper</h1>
       <div>
         <IconNumberCart style={{fontSize: '20px'}}>{cartNumber}</IconNumberCart>
-        <IonIcon icon={clipboard} onClick={() => navigate(pages.myorders)}></IonIcon>
+        <IonIcon icon={clipboardOutline} onClick={() => navigate(pages.myorders)}></IonIcon>
         <IonIcon icon={cartOutline} onClick={() => navigate(pages.shoppingCart)}></IonIcon>
         <IonIcon icon={logOutOutline} onClick={() => logout()}></IonIcon>
       </div>
@@ -72,6 +72,9 @@ const ContainerHeader = styled.header`
   }
 
   div {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
     * {
       font-size: 45px;
     }
@@ -81,12 +84,11 @@ const ContainerHeader = styled.header`
     cursor: pointer;
   }
 `
-
-const IconNumberCart = styled.div`
+const IconNumberCart = styled.span`
   background-color: #1F1712;;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,6 +96,6 @@ const IconNumberCart = styled.div`
   font-weight: bold;
   position: absolute;
   top: 0;
-  right: 90px;
+  right: 70px;
   z-index: 1;
 `
