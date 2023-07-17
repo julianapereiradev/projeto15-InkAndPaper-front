@@ -145,6 +145,7 @@ font-weight: bold;
 const Remove = styled.div`
   margin-right: 10px;
   font-size: 50px;
+  cursor: pointer;
 
 `
 const Finish = styled.button`
