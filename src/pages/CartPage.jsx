@@ -7,16 +7,18 @@ import { headersAuth, pages, requisitions } from "../routes/routes";
 import { IonIcon } from '@ionic/react';
 import { trashOutline } from 'ionicons/icons';
 import { useNavigate } from "react-router-dom"
+import { validateUser } from "../constants/functions";
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [reloaded, setReloaded] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
+    validateUser(user, setUser);  
     fetchCartItems();
-  }, [reloaded]);
+  }, [reloaded, user]);
 
   useEffect(() => {
     window.addEventListener('beforeunload', handleBeforeUnload); 
@@ -142,6 +144,7 @@ font-weight: bold;
 `
 const Remove = styled.div`
   margin-right: 10px;
+  font-size: 50px;
 
 `
 const Finish = styled.button`

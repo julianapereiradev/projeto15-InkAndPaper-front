@@ -4,12 +4,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
 import { requisitions, pages } from '../routes/routes';
+import { validateUser } from '../constants/functions';
 import { useNavigate } from "react-router-dom";
-import { validateUser } from "../constants/functions";
 
 export default function CheckoutPage() {
   const { user, setUser } = useContext(AuthContext);
-  const [checkoutItems, setCheckoutItems] = useState(undefined);
+  const [checkoutItems, setCheckoutItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function CheckoutPage() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const response = await axios.get(requisitions.getCheckout, config);
+      const response = await axios.get(requisitions.myOrders, config);
       setCheckoutItems(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -45,19 +45,19 @@ export default function CheckoutPage() {
     <Container>
       <Header />
       <Title>
-        <h1>Pedido feito com sucesso!</h1>
         <h2>Confira abaixo todos os seus pedidos:</h2>
       </Title>
       <Info>
-          <CheckoutItem key={checkoutItems._id}>
+        {checkoutItems.map((item) => (
+          <CheckoutItem key={item._id}>
             <Details>
-              <h2><strong>ID do pedido:</strong> {checkoutItems._id}</h2>
-              <p>Data e hora da compra: {checkoutItems.purchaseDateTime}</p>
-              <p>Método de pagamento: {checkoutItems.paymentData}</p>
-              <p>Endereço: {checkoutItems.address}</p>
+              <h2><strong>ID do pedido:</strong> {item._id}</h2>
+              <p>Data e hora da compra: {item.purchaseDateTime}</p>
+              <p>Método de pagamento: {item.paymentData}</p>
+              <p>Endereço: {item.address}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
-            {checkoutItems && checkoutItems?.cartItems.map((cartItem) => (
+            {item.cartItems.map((cartItem) => (
               <CartItem key={cartItem.productId}>
                 <p>Título: {cartItem.title}</p>
                 <p>Quantidade: {cartItem.quantity}</p>
@@ -65,6 +65,7 @@ export default function CheckoutPage() {
               </CartItem>
             ))}
           </CheckoutItem>
+        ))}
       </Info>
       <ButtonDiv>
         <Back onClick={goToHomepage}>Voltar à loja</Back>
@@ -142,4 +143,8 @@ border: 8px;
 `
 const Info = styled.div`
 font-size: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `

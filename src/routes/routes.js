@@ -6,6 +6,7 @@ export const pages = {
     shoppingCart: '/carrinho',
     payment: '/pagamento',
     checkout: '/checkout',
+    myorders: '/myorders'
 }
 
 const API_URL = 'http://localhost:5000';
@@ -22,7 +23,8 @@ export const requisitions = {
     removeItems: API_URL + '/cart/items',
     payment: API_URL + '/payment',
     clearCart: API_URL + '/clear/cart',
-    getCheckout: API_URL +'/checkout'
+    getCheckout: API_URL +'/checkout',
+    myOrders: API_URL + '/myorders'
 }
 
 export function headersAuth(token) {
