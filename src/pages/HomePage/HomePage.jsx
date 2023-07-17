@@ -66,8 +66,11 @@ const ProductContainer = styled.div`
 `
 
 const ProductMain = styled.div`
+  width: 100vw;
+  min-height: 80vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin: 10px;
 `
