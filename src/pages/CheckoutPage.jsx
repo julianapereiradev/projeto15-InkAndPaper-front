@@ -36,6 +36,7 @@ export default function CheckoutPage() {
     navigate(pages.home);
   }
 
+
   return (
     <Container>
       <Header />
@@ -49,7 +50,7 @@ export default function CheckoutPage() {
             <h3>Informações Gerais:</h3>
               <p><strong>Data e hora da compra:</strong> {checkoutItems.purchaseDateTime}</p>
               <p><strong>Método de pagamento:</strong> {checkoutItems.paymentData}</p>
-              <p><strong>Endereço:</strong> {checkoutItems.address} - {checkoutItems.addressComp}</p>
+              <p><strong>Endereço:</strong> {checkoutItems.addressData} - {checkoutItems.addressComp}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
             {checkoutItems && checkoutItems?.cartItems.map((cartItem) => (

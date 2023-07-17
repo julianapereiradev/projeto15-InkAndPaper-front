@@ -51,7 +51,7 @@ export default function CheckoutPage() {
             <h3>Informações Gerais:</h3>
               <p><strong>Data e hora da compra:</strong> {item.purchaseDateTime}</p>
               <p><strong>Método de pagamento:</strong> {item.paymentData}</p>
-              <p><strong>Endereço:</strong> {item.address} - {item.addressComp}</p>
+              <p><strong>Endereço:</strong> {item.addressData} - {item.addressComp}</p>
             </Details>
             <h3>Itens do carrinho:</h3>
             {item.cartItems.map((cartItem) => (
