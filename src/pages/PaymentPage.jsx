@@ -103,7 +103,7 @@ export default function PaymentPage() {
                     <CartItem key={item.productId}>
                         <CartItemTitle>{item.title}</CartItemTitle>
                         <CartItemQuantity> Quantidade: {item.quantity}</CartItemQuantity>
-                        <CartItemPrice> Preço: {item.price}</CartItemPrice>
+                        <CartItemPrice> Preço: R$ {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</CartItemPrice>
                     </CartItem>
                 ))}
                 <Total>Total: R$ {calculateTotalPrice()}</Total>
@@ -199,13 +199,17 @@ const CartItem = styled.div`
 
 const CartItemTitle = styled.span`
   flex: 1;
+  padding: 10px;
 `;
 
 const CartItemPrice = styled.span`
   flex-shrink: 0;
+  padding: 10px;
+
 `;
 
 const CartItemQuantity = styled.span`
+  padding: 10px;
     
 `;
 
@@ -251,9 +255,12 @@ const ButtonContainer = styled.div`
 
 const BackButton = styled.button`
   padding: 10px 20px;
-  background-color: #ccc;
+  background-color: #F6E4C4;
+  color: #1F1712;
   border: none;
   cursor: pointer;
+border-radius: 5px;
+
 `;
 
 const FinishButton = styled.button`
@@ -261,6 +268,8 @@ const FinishButton = styled.button`
   background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
   border: none;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+border-radius: 5px;
+
 `;
 
 const SearchButton = styled.button`
@@ -269,6 +278,7 @@ background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
 border: none;
 cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 margin-bottom: 10px;
+border-radius: 5px;
 `;
 
 const PaymentDataContainer = styled.div`
@@ -288,5 +298,7 @@ const PaymentDataContainer = styled.div`
 
 const Total = styled.div`
 border: 1px solid #F6E4C4;
+padding: 10px;
+
 
 `
