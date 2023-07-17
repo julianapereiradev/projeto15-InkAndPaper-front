@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
-import { requisitions, pages } from '../routes/routes';
+import { headersAuth, requisitions, pages } from '../routes/routes';
 import { validateUser } from '../constants/functions';
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
@@ -26,7 +26,7 @@ export default function CheckoutPage() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const response = await axios.get(requisitions.myOrders, config);
+      const response = await axios.get(requisitions.myOrders, headersAuth(user.token), config);
       setCheckoutItems(response.data);
     } catch (error) {
       console.log(error);
