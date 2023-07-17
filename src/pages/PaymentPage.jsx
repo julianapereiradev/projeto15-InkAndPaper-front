@@ -133,7 +133,6 @@ export default function PaymentPage() {
 
             <AddressContainer>
                 <h2>Endereço de Entrega</h2>
-                <h3>{addressData}</h3>
                 <AddressInput
                     type="number"
                     placeholder="Digite seu CEP"
@@ -150,6 +149,8 @@ export default function PaymentPage() {
                         fetchAddressByCep(address);
                     }
                 }}>Buscar CEP</SearchButton>
+
+                <h3>• <strong>Endereço encontrado:</strong> {addressData}</h3>
 
                 <Address 
                     type="text"
@@ -175,11 +176,17 @@ const CheckoutContainer = styled.div`
   margin-top: 70px;
   padding: 20px;
   background-color: #1F1712;
-  color: #F6E4C4;
+  color: #ffffff;
+  font-size: 20px;
 `;
 const Address = styled.input`
     width: 100%;
     padding: 10px;
+    background-color:#1F1712;
+  border: 1px solid #F6E4C4;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
 `
 const SummaryContainer = styled.div`
   margin-bottom: 20px;
@@ -235,24 +242,44 @@ const PaymentOption = styled.button`
 
 const AddressContainer = styled.div`
   margin-bottom: 20px;
+
   h2{
     font-size: 30px;
     margin-bottom: 10px;
   }
-  h3{
-    margin-bottom: 10px;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  } 
+
+  strong {
+    font-weight: bold;
   }
 `;
 
 const AddressInput = styled.input`
   width: 100%;
   padding: 10px;
+  height: 50px;
   margin-bottom: 10px;
+  background-color:#1F1712;
+  border: 1px solid #F6E4C4;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+
+  input::placeholder {
+  color: #F6E4C4;
+  font-size: 16px;
+  padding-left: 10px;
+}
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 50px;
 `;
 
 const BackButton = styled.button`
@@ -261,21 +288,23 @@ const BackButton = styled.button`
   color: #1F1712;
   border: none;
   cursor: pointer;
-border-radius: 5px;
-
+  border-radius: 5px;
+  margin-right: 30px;
+  font-size: 20px;
 `;
 
 const FinishButton = styled.button`
   padding: 10px 20px;
+  font-size: 20px;
   background-color: #F6E4C4;
   border: none;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-border-radius: 5px;
-
+  border-radius: 5px;
 `;
 
 const SearchButton = styled.button`
 padding: 10px 20px;
+font-size: 18px;
 background-color: ${(props) => (props.disabled ? '#1F1712' : '#F6E4C4')};
 border: none;
 cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
