@@ -1,5 +1,5 @@
 export function validateUser(user, setUser) {
-    if (!user && localStorage.user) {
-        return setUser({ ...JSON.parse(localStorage.user) }); //recuperar dados do localStorage
+    if ((!user || user === 0) && localStorage.user) {
+        setUser({ ...JSON.parse(localStorage.user) }); //recuperar dados do localStorage
     }
 }

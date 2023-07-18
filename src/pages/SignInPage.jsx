@@ -16,8 +16,9 @@ export default function SignInPage() {
 
   useEffect(() => {
     validateUser(user, setUser);
+    const isValidUser = (user !== 0 && user)
 
-    if (user !== 0 && user) {
+    if (isValidUser) {
       navigate(pages.home);
     }
   }, [user])

@@ -21,7 +21,10 @@ export default function PaymentPage() {
 
     useEffect(() => { 
         validateUser(user, setUser);
-        fetchCartItems(); }, [user]);
+        const isValidUser = (user !== 0 && user)
+
+        isValidUser && fetchCartItems(); 
+      }, [user]);
     const fetchCartItems = async () => {
         try {
             const config = {
