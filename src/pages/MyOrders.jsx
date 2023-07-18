@@ -99,15 +99,19 @@ margin-bottom: 30px;
 `
 
 const Info = styled.div`
+min-height: 80vh;
+min-width: 60vw;
 font-size: 20px;
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
 font-size: 22px;
 margin: 30px;
 `
 
 const CheckoutItem = styled.div`
+  width: 100%;
   margin-bottom: 30px;
   border: 1px solid #F6E4C4;
   padding-left: 30px;
