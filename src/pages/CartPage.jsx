@@ -17,7 +17,9 @@ export default function CartPage() {
 
   useEffect(() => {
     validateUser(user, setUser);  
-    fetchCartItems();
+    const isValidUser = (user !== 0 && user);
+
+    isValidUser && fetchCartItems();
   }, [reloaded, user]);
 
   useEffect(() => {

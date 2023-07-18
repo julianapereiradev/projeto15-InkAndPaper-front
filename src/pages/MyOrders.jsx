@@ -16,7 +16,9 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     validateUser(user, setUser);  
-    fetchCheckoutItems();
+    const isValidUser = (user !== 0 && user)
+
+    isValidUser && fetchCheckoutItems();
   }, [user]);
 
   const fetchCheckoutItems = async () => {

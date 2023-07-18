@@ -17,8 +17,9 @@ export default function ProductPage() {
 
   useEffect(() => {
     validateUser(user, setUser);
+    const isValidUser = (user !== 0 && user)
 
-    axios.get(requisitions.getProduct + id, headersAuth(user.token))
+    isValidUser && axios.get(requisitions.getProduct + id, headersAuth(user.token))
       .then(resp => setProduct(resp.data))
       .catch(error => {
         alert(error.response.data);
@@ -43,7 +44,11 @@ export default function ProductPage() {
                 <span><strong>Editora/Ano: </strong>{product.publisher}, {product.year}</span>
               </ProductInfos>
 
-              <Form id={id} token={user.token} product={product}/>
+              {product.quantityInStock > 0 ? (
+                <Form id={id} token={user.token} product={product}/>
+              ) : (
+                <OutOfStock><strong>Esgotado!</strong> <br/> No momento não temos esse livro em estoque.</OutOfStock>
+              )}
             </InfoContainer>
 
 
@@ -105,5 +110,16 @@ const ProductInfos = styled.div`
 
   span {
     margin: 10px;
+  }
+`
+
+const OutOfStock = styled.h1`
+  height: 30vh;
+  color: #FFF;
+  font-size: 3.5vh;
+  line-height: 35px;
+
+  strong {
+    font-size: 7vh;
   }
 `

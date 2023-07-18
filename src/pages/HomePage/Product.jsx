@@ -14,10 +14,17 @@ export default function Product({ item }) {
             onClick={() => openProductId(item._id)}
             title={item.title}
         >
-            <Image src={item.image} />
+            <Image src={item.image} quantity={item.quantityInStock}/>
             <TextBox>
                 <div>{item.title}</div>
-                <div style={{fontWeight: 'bold', fontSize: '22px'}}>R${item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+                <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
+                    {item.quantityInStock > 0 ? (
+                        `R$ ${item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+                        ) : (
+                        'Esgotado'
+                        )
+                    }
+                </div>
             </TextBox>
         </ProductBox>
     )
@@ -44,6 +51,7 @@ const Image = styled.img`
   justify-content: center;
   align-items: center;
   margin-bottom: 1vh;
+  opacity: ${props => (props.quantity > 0 ? 1 : 0.2)};
 
   img {
     width: 100%;

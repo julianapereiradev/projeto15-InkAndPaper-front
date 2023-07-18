@@ -20,8 +20,9 @@ export default function HomePage() {
   useEffect(() => {
 
     validateUser(user, setUser);
+    const isValidUser = (user !== 0 && user)
 
-    axios.get(requisitions.getProducts, headersAuth(user.token))
+    isValidUser && axios.get(requisitions.getProducts, headersAuth(user.token))
       .then(res => setProducts(res.data))
       .catch(error => {
         navigate(pages.signIn);
