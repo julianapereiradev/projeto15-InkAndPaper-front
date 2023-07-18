@@ -32,7 +32,7 @@ export default function ProductPage() {
       <ProductContainer>
         <Header />
         {product ? (
-          <ProductBox>
+          <ProductBox quantity={product.quantityInStock}>
             <img src={product.image} alt="Imagem do produto" />
 
             <InfoContainer>
@@ -80,6 +80,7 @@ const ProductBox = styled.div`
     width: 28vw;
     height: 73vh;
     border: 5px solid #F6E4C4;
+    opacity: ${props => props.quantity > 0 ? 1 : 0.15} ;
   }
 `
 
